@@ -8,6 +8,8 @@ public class GameLoader : MonoBehaviour
 
     [SerializeField] private GameObject[] gameObjects;
     [SerializeField] public GameObject finishMenu;
+    [SerializeField] public GameObject pausePanel;
+    [SerializeField] public GameObject pauseButton;
     [SerializeField] public Joystick joystick;
 
     public static string ExitScene = "Menu";
@@ -15,11 +17,6 @@ public class GameLoader : MonoBehaviour
     private void Start()
     {
         finishMenu.SetActive(false);
-
-        if (SystemInfo.deviceType != DeviceType.Handheld)
-        {
-            joystick.gameObject.SetActive(false);
-        }
 
         Camera cam = GameObject.Find("Main Camera").GetComponent<Camera>();
         SpriteRenderer BG = GameObject.Find("BG").GetComponent<SpriteRenderer>();
@@ -39,11 +36,24 @@ public class GameLoader : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            SceneManager.LoadScene(ExitScene);
-            ExitScene = "Menu";
-        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+            SwitchPause();
     }
 
+    public void SetPaused(bool paused)
+    {
+        pausePanel.SetActive(paused);
+        pauseButton.SetActive(!paused);
+        Time.timeScale = paused ? 0f : 1f;
+    }
+
+    public void SwitchPause() => SetPaused(!pausePanel.activeSelf);
+
+    public void Continue() => SetPaused(false);
+
+    public void Exit()
+    {
+        SceneManager.LoadScene(ExitScene);
+        ExitScene = "Menu";
+    }
 }
