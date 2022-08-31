@@ -84,6 +84,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -592,6 +593,27 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Build: -7212908561532951047
+      Exit: 908911403001600568
+      Info: 5385752514103092543
+      Button4: -8591514825390774781
+      Edit: 2612643696963342578
+      Snap: -5644743045364067850
+      Arrow: -6885722887278889699
+      Save: 2477628929557893019
+      RotateLeft: -524074894043426323
+      Button3: -7514736250736326063
+      Info_Circle: -4905698018198787690
+      ExitEditor: 1613868908823004423
+      Button1: -6973324265583258322
+      Delete: 6215199805178662040
+      Editor: -210010102667714848
+      Icons: 2836915749624894453
+      Playtest: 2305446016025343602
+      Button2: 2921063373799211753
+      EditorObj: 79262543149503620
+      RotateRight: 6203240909911375993
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -69,6 +69,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -472,6 +473,22 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Danger: -1626899417746448534
+      Spike: -2516179862187422133
+      TeleportB: -5772736279704159817
+      Circle: 366759787362086406
+      TeleportA: 153884431677385033
+      Box: -1509151672871623176
+      Speed 1: 1021086536255166552
+      Speed 2: 6937152079316929744
+      Speed 3: -914548892694380295
+      Platform: -8241004091132152518
+      Speed 0: -5758382033551127663
+      BallPortal: -6085397349025619798
+      Square: 1220373141956996788
+      Checkpoint: 6352202549846540306
+      Finish: 8533125735466903866
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
