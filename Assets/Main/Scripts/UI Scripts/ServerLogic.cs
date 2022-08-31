@@ -24,7 +24,7 @@ public class ServerLogic : MonoBehaviour
 {
     public static string rating = "1";
 
-    private string urlBase = "https://beloeozero.ru/ppdsh/";
+    public static string urlBase = "https://beloeozero.ru/ppdsh/";
     private string url;
     private string[] keys;
     private string[] values;
