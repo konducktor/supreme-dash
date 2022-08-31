@@ -51,6 +51,8 @@ public class GameLoader : MonoBehaviour
 
     public void Continue() => SetPaused(false);
 
+    public void Restart() => SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
     public void Exit()
     {
         SceneManager.LoadScene(ExitScene);
