@@ -11,7 +11,7 @@ public class SaveLoader : MonoBehaviour
 
     void Awake()
     {
-        path = string.Concat(Application.persistentDataPath + "/", EditorLogic.levelName.ToLower() + ".txt");
+        path = EditorLogic.levelName != null ? Path.Combine(Application.persistentDataPath, EditorLogic.levelName.ToLower() + ".txt") : string.Empty;
     }
 
     public static void Save()
