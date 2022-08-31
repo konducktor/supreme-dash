@@ -9,8 +9,6 @@ public class GameInput : MonoBehaviour
 
     private static bool isRotating = false;
     private static float rotationAxis = 0;
-
-    private static bool isMoving = false;
     private static float scrollAxis = 0;
 
     private static int maxTouches = 0;
@@ -89,13 +87,13 @@ public class GameInput : MonoBehaviour
 
     public static bool Rotate()
     {
-        Debug.Log(Input.GetButton("Rotate"));
-        if (isRotating && !isSnap)
+        if ((isRotating || Input.GetButtonDown("Rotate")))
         {
             isRotating = false;
             return true;
         }
-        return Input.GetButton("Rotate") || isRotating;
+
+        return isRotating || (Input.GetButton("Rotate") && Shift());
     }
 
     public static float RotationAxis()
@@ -134,38 +132,32 @@ public class GameInput : MonoBehaviour
     {
         if (Input.touchCount == 1)
         {
-            return !IsOverUI() && !EditorSelector.isEditing && !isMoving && isDelete;
+            return !IsOverUI() && !EditorSelector.isEditing && !ContinueMove() && isDelete;
         }
-        return Input.GetMouseButton(1) && Input.touchCount <= 0 && !IsOverUI() && !EditorSelector.isEditing && !isMoving;
+        return Input.GetMouseButton(1) && Input.touchCount <= 0 && !IsOverUI() && !EditorSelector.isEditing && !ContinueMove();
     }
 
     public static bool StartMove()
     {
-        if (isMoving)
-        {
-            return false;
-        }
         if (Input.touchCount == 2)
         {
             lastDist = Vector3.Distance(Input.GetTouch(0).position, Input.GetTouch(1).position);
             if (Input.GetTouch(1).phase == TouchPhase.Began)
             {
-                isMoving = true;
                 return true;
             }
         }
-        isMoving = Input.GetMouseButtonDown(2);
+
         return Input.GetMouseButtonDown(2);
     }
 
     public static bool ContinueMove()
     {
-        if (isMoving && Input.touchCount == 2)
+        if (Input.GetMouseButton(2) || Input.touchCount == 2)
         {
             return true;
         }
 
-        isMoving = false;
         return false;
     }
 

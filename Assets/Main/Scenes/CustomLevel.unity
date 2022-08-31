@@ -336,7 +336,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 61.44, y: 20.48}
+  m_Size: {x: 60, y: 20}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -368,7 +368,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fb275915e561447aa36b3f1182a5cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1947184612}
+  followCamera: {fileID: 1533325325}
+  offset: 0
 --- !u!1 &987922756
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,7 +473,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.47058824, g: 0.47058824, b: 0.47058824, a: 0}
+  m_BackGroundColor: {r: 0.47058824, g: 0.47058824, b: 0.47058824, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

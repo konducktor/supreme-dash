@@ -34,6 +34,8 @@ public class EditorSelector : MonoBehaviour
     public void EndEdit()
     {
         SetObjOpacity(EditorLogic.level, 1f);
+        SetObjOpacity(EditorLogic.level, lastSelected);
+
         lastSelected.Clear();
         isEditing = false;
     }
@@ -42,13 +44,13 @@ public class EditorSelector : MonoBehaviour
     {
         if (!isEditing) return;
 
-        if (!Input.GetButton("Shift") && newSelected.Count > 0)
+        if (!GameInput.Shift() && newSelected.Count > 0)
         {
             lastSelected.Clear();
         }
 
         SetObjOpacity(EditorLogic.level, 0.3f);
-        SetObjOpacity(EditorLogic.level, lastSelected, 1f);
+        SetObjOpacity(EditorLogic.level, lastSelected);
 
         SelectObjects();
 
@@ -58,48 +60,53 @@ public class EditorSelector : MonoBehaviour
 
     void SelectObjects()
     {
-        if (Input.GetMouseButtonDown(0) && !GameInput.IsOverUI())
+        if (GameInput.TouchDown() && !GameInput.IsOverUI())
         {
-            start = EditorCursor.mousePos;
-            selectLine.positionCount = 4;
+            start = GameInput.Pointer(0);
 
             return;
         }
 
-        if (Input.GetMouseButton(0))
+        if (GameInput.Touch())
         {
-            selectLine.SetPosition(0, new Vector2(EditorCursor.mousePos.x, EditorCursor.mousePos.y));
-            selectLine.SetPosition(1, new Vector2(start.x, EditorCursor.mousePos.y));
-            selectLine.SetPosition(2, new Vector2(start.x, start.y));
-            selectLine.SetPosition(3, new Vector2(EditorCursor.mousePos.x, start.y));
+            if (!GameInput.IsOverUI())
+            {
+                selectLine.positionCount = 4;
+                selectLine.SetPosition(0, new Vector2(GameInput.Pointer(0).x, GameInput.Pointer(0).y));
+                selectLine.SetPosition(1, new Vector2(start.x, GameInput.Pointer(0).y));
+                selectLine.SetPosition(2, new Vector2(start.x, start.y));
+                selectLine.SetPosition(3, new Vector2(GameInput.Pointer(0).x, start.y));
 
-            return;
-        }
+                return;
+            }
 
-        if (Input.GetMouseButtonUp(0) && !GameInput.IsOverUI())
-        {
             selectLine.positionCount = 0;
-
-            end = EditorCursor.mousePos;
-
-            topLeft = new Vector3(start.x, start.y, 0);
-            downRight = new Vector3(end.x, end.y, 0);
-
-            if (start.x > end.x)
-            {
-                topLeft.x = end.x;
-                downRight.x = start.x;
-            }
-            if (start.y < end.y)
-            {
-                topLeft.y = end.y;
-                downRight.y = start.y;
-            }
-
-
-            StartCoroutine(Reset());
-
             return;
+        }
+        else
+        {
+            if (GameInput.TouchUp() && !GameInput.IsOverUI())
+            {
+
+                end = GameInput.Pointer(0);
+
+                topLeft = new Vector3(start.x, start.y, 0);
+                downRight = new Vector3(end.x, end.y, 0);
+
+                if (start.x > end.x)
+                {
+                    topLeft.x = end.x;
+                    downRight.x = start.x;
+                }
+                if (start.y < end.y)
+                {
+                    topLeft.y = end.y;
+                    downRight.y = start.y;
+                }
+
+                StartCoroutine(Reset());
+                return;
+            }
         }
     }
 
@@ -107,16 +114,20 @@ public class EditorSelector : MonoBehaviour
     {
         yield return null;
 
+        selectLine.positionCount = 0;
+
         start = Vector3.zero;
         end = Vector3.zero;
+
         topLeft = Vector3.zero;
         downRight = Vector3.zero;
+
+        yield break;
     }
 
 
     public static Color currentObjectColor;
-    [SerializeField] private InputField objectColor;
-    public void ObjectColor()
+    public void ObjectColor(InputField objectColor)
     {
         foreach (int i in lastSelected)
         {
@@ -142,10 +153,24 @@ public class EditorSelector : MonoBehaviour
         }
     }
 
-    public static Vector3 currentObjectScale;
-    [SerializeField] private InputField individualScale;
+    public void ObjectAlpha(InputField objectAlpha)
+    {
+        float a = (float)Convert.ToDecimal(objectAlpha.text) / 100f;
+        foreach (int index in lastSelected)
+        {
+            Color color = EditorLogic.level[index].GetComponent<SpriteRenderer>().color;
+            color.a = a;
+            EditorLogic.level[index].GetComponent<SpriteRenderer>().color = color;
+            EditorLogic.objects[index].col.a = a;
+            Color color2 = cursor.GetComponent<SpriteRenderer>().color;
+            color2.a = a;
+            cursor.GetComponent<SpriteRenderer>().color = color2;
+        }
+    }
 
-    public void IndividualObjectScale()
+    public static Vector3 currentObjectScale;
+
+    public void IndividualObjectScale(InputField individualScale)
     {
         currentObjectScale = new Vector3(
                 (float)Convert.ToDecimal(individualScale.text),
@@ -161,40 +186,63 @@ public class EditorSelector : MonoBehaviour
         cursor.transform.localScale = currentObjectScale;
     }
 
-    [SerializeField] private InputField objectScale;
-    public void ObjectScale()
+    public void ObjectScale(InputField objectScale)
     {
-        Vector3 center = new Vector3(0, 0, 0);
-
-        foreach (int a in lastSelected)
-        {
-            center += EditorLogic.level[a].transform.position;
-        }
-        center = center / lastSelected.Count;
+        Vector3 center = GetCenter();
+        float d = (float)Convert.ToDecimal(objectScale.text);
 
         foreach (int b in lastSelected)
         {
-            Transform obj = EditorLogic.level[b].transform;
+            Transform transform = EditorLogic.level[b].transform;
 
-            obj.position = center + ((obj.position - center) * (float)Convert.ToDecimal(objectScale.text));
+            transform.position = center + (transform.position - center) * d;
+            transform.localScale *= d;
 
-            EditorLogic.level[b].transform.localScale *= (float)Convert.ToDecimal(objectScale.text);
-            currentObjectScale = EditorLogic.level[b].transform.localScale;
-            EditorLogic.objects[b].scale = currentObjectScale;
-
-            cursor.transform.localScale = currentObjectScale;
+            currentObjectScale = transform.localScale;
+            EditorLogic.objects[b].scale = transform.localScale;
         }
+
+        cursor.transform.localScale = currentObjectScale;
 
     }
 
-    void SetObjOpacity(List<GameObject> objects, List<int> IDs, float opacity)
-    {
 
-        foreach (int e in IDs)
+    public void ObjectPositionX(InputField positionX)
+    {
+        float num = (float)Convert.ToDecimal(positionX.text);
+        foreach (int index in EditorSelector.lastSelected)
         {
-            Color col = objects[e].GetComponent<SpriteRenderer>().color;
-            col.a = opacity;
-            objects[e].GetComponent<SpriteRenderer>().color = col;
+            Vector3 position = EditorLogic.level[index].transform.position;
+            position.x += num;
+            EditorLogic.level[index].transform.position = position;
+            EditorLogic.SavedObject savedObject = EditorLogic.objects[index];
+            savedObject.pos.x = savedObject.pos.x + num;
+        }
+        positionX.text = "";
+    }
+
+    public void ObjectPositionY(InputField positionY)
+    {
+        float num = (float)Convert.ToDecimal(positionY.text);
+        foreach (int index in EditorSelector.lastSelected)
+        {
+            Vector3 position = EditorLogic.level[index].transform.position;
+            position.y += num;
+            EditorLogic.level[index].transform.position = position;
+            EditorLogic.SavedObject savedObject = EditorLogic.objects[index];
+            savedObject.pos.y = savedObject.pos.y + num;
+        }
+        positionY.text = "";
+    }
+
+
+    void SetObjOpacity(List<GameObject> objects, List<int> IDs)
+    {
+        foreach (int index in IDs)
+        {
+            Color color = objects[index].GetComponent<SpriteRenderer>().color;
+            color.a = EditorLogic.objects[index].col.a;
+            objects[index].GetComponent<SpriteRenderer>().color = color;
         }
     }
     void SetObjOpacity(List<GameObject> objects, float opacity)
@@ -205,5 +253,15 @@ public class EditorSelector : MonoBehaviour
             col.a = opacity;
             e.GetComponent<SpriteRenderer>().color = col;
         }
+    }
+
+    private Vector3 GetCenter()
+    {
+        Vector3 a = Vector3.zero;
+        foreach (int index in lastSelected)
+        {
+            a += EditorLogic.level[index].transform.position;
+        }
+        return a / (float)lastSelected.Count;
     }
 }
