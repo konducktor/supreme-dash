@@ -48,7 +48,7 @@ public class EditorCursor : MonoBehaviour
 
         if (GameInput.Rotate() && !GameInput.Shift())
         {
-            currentRotation.z = Round(currentRotation.z / 15, 0) * 15;
+            currentRotation.z = Round(currentRotation.z / 15f, 0) * 15f;
 
             currentRotation += new Vector3(0, 0, 15f) * GameInput.RotationAxis();
 
