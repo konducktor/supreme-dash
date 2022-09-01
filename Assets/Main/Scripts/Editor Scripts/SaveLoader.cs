@@ -55,6 +55,10 @@ public class SaveLoader : MonoBehaviour
                 obj.AddField("col", EditorLogic.objects[i].col.FromColor());
             if (EditorLogic.objects[i].scale != Vector3.one)
                 obj.AddField("scale", EditorLogic.objects[i].scale.FromVector3());
+            if (EditorLogic.objects[i].deco)
+                obj.AddField("deco", EditorLogic.objects[i].deco);
+            if (EditorLogic.objects[i].layer != 0)
+                obj.AddField("layer", EditorLogic.objects[i].layer);
 
             objectArray.Add(obj);
         }
@@ -76,6 +80,7 @@ public class SaveLoader : MonoBehaviour
         {
             string key = lvl.keys[i];
             JSONObject element = lvl.list[i];
+
             switch (key) //туть добавляем параметры уровня
             {
                 case "data":
@@ -96,21 +101,17 @@ public class SaveLoader : MonoBehaviour
         List<GameObject> importedLevel = new List<GameObject>();
         EditorLogic.objects = new List<EditorLogic.SavedObject>();
 
-        int objID;
-        Vector3 pos;
-        Vector3 rot;
-        Color col;
-        Vector3 scale;
-
         JSONObject obj;
 
         for (int a = 0; a < data.list.Count; a++)
         {
-            objID = 0;
-            pos = Vector3.zero;
-            rot = Vector3.zero;
-            col = Color.white;
-            scale = Vector3.one;
+            int objID = 0;
+            Vector3 pos = Vector3.zero;
+            Vector3 rot = Vector3.zero;
+            Color col = Color.white;
+            Vector3 scale = Vector3.one;
+            bool deco = false;
+            int layer = 0;
 
             obj = data.list[a];
             for (int b = 0; b < obj.list.Count; b++)
@@ -132,6 +133,12 @@ public class SaveLoader : MonoBehaviour
                     case "scale":
                         scale = obj.list[b].ToVector3();
                         break;
+                    case "deco":
+                        deco = obj.list[b].boolValue;
+                        break;
+                    case "layer":
+                        layer = obj.list[b].intValue;
+                        break;
                 }
             }
 
@@ -140,6 +147,19 @@ public class SaveLoader : MonoBehaviour
             importedLevel[importedLevel.Count - 1].transform.localScale = scale;
 
             EditorLogic.objects.Add(new EditorLogic.SavedObject(objID, pos, rot, col, scale));
+
+            if (layer != 0)
+            {
+                EditorLogic.objects[EditorLogic.objects.Count - 1].layer = layer;
+                importedLevel[importedLevel.Count - 1].GetComponent<SpriteRenderer>().sortingOrder = layer;
+            }
+
+            if (deco)
+            {
+                Destroy(importedLevel[importedLevel.Count - 1].GetComponent<Rigidbody2D>());
+                Destroy(importedLevel[importedLevel.Count - 1].GetComponent<PhysicsLogic>());
+                Destroy(importedLevel[importedLevel.Count - 1].GetComponent<Collider2D>());
+            }
         }
 
         return importedLevel;

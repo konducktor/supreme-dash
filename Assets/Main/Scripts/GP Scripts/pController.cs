@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -90,33 +91,44 @@ public class pController : MonoBehaviour
             Object.Destroy(gameObject);
             return;
         }
+
         if (collider.CompareTag("Checkpoint"))
         {
             savedGameMode = gameMode;
             startPos = collider.transform.position;
             return;
         }
+
         if (collider.CompareTag("Spike"))
         {
             ResetPosition();
             return;
         }
+
         if (collider.CompareTag("BallPortal") && IsAbleToChange)
         {
-            if (!ball.activeSelf)
-            {
-                cube.SetActive(false);
-                ball.SetActive(true);
-                gameMode = "ball";
-                rb.gravityScale = 2f;
-                IsAbleToChange = false;
-                return;
-            }
-            cube.SetActive(true);
-            ball.SetActive(false);
             gameMode = "cube";
             rb.gravityScale = 1f;
-            IsAbleToChange = false;
+
+            if (!ball.activeSelf)
+            {
+                gameMode = "ball";
+                rb.gravityScale = 2f;
+            }
+
+            cube.SetActive(!cube.activeSelf);
+            ball.SetActive(!ball.activeSelf);
+
+            StartCoroutine(Ball());
         }
+    }
+
+    IEnumerator Ball()
+    {
+        IsAbleToChange = false;
+
+        yield return new WaitForSeconds(2f);
+
+        IsAbleToChange = true;
     }
 }

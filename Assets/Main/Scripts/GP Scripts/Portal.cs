@@ -26,7 +26,7 @@ public class Portal : MonoBehaviour
         p2Collider.enabled = false;
         obj.transform.position = portal2.position;
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(2f);
 
         p2Collider.enabled = true;
     }

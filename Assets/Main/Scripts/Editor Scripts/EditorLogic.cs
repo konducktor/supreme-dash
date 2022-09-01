@@ -24,6 +24,9 @@ public class EditorLogic : MonoBehaviour
         public Color col;
         public Vector3 scale;
 
+        public bool deco;
+        public int layer;
+
         public SavedObject(int objID, Vector3 position, Vector3 rotation, Color color, Vector3 scale)
         {
             this.id = objID;
@@ -31,6 +34,8 @@ public class EditorLogic : MonoBehaviour
             this.rot = rotation;
             this.col = color;
             this.scale = scale;
+            this.deco = false;
+            this.layer = 0;
         }
     }
 
@@ -43,14 +48,19 @@ public class EditorLogic : MonoBehaviour
 
     void Start()
     {
+
         currentObject = new GameObject();
         gameObjects = inputObjects;
 
         level.Clear();
         objects.Clear();
 
-        level = SaveLoader.JSONToLevel(SaveLoader.Load(), cam, gameObjects, GetComponent<AudioSource>());
-        bgColor = cam.backgroundColor;
+        if (EditorLogic.levelName != null)
+        {
+            level = SaveLoader.JSONToLevel(SaveLoader.Load(), cam, gameObjects, GetComponent<AudioSource>());
+        }
+
+        EditorLogic.bgColor = this.cam.backgroundColor;
     }
 
     public static Vector3 RoundVector(Vector3 vec, int amount)
@@ -64,6 +74,7 @@ public class EditorLogic : MonoBehaviour
     private bool conditions;
     void Update()
     {
+        Debug.Log(EditorLogic.bgColor);
         conditions =
             objects.Exists(a => RoundVector(a.pos, 0) == RoundVector(GameInput.Pointer(), 0)) &&
             objects.Exists(b => b.rot == EditorCursor.currentRotation) &&
@@ -98,18 +109,17 @@ public class EditorLogic : MonoBehaviour
 
 
     [SerializeField] private InputField bgInput;
-    public static Color bgColor = new Color(0.4f, 0.4f, 0.4f);
+    public static Color bgColor;
     public void BGColor()
     {
         if (bgInput.text != "")
         {
             bgColor = ColorSelector.ColorFromString(bgInput.text);
             cam.backgroundColor = bgColor;
+            return;
         }
-        else
-        {
-            bgColor = cam.backgroundColor;
-        }
+
+        bgColor = cam.backgroundColor;
     }
 
     public void Playtest()

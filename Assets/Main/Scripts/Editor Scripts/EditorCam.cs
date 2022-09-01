@@ -39,12 +39,12 @@ public class EditorCam : MonoBehaviour
     {
         dir = Vector3.zero;
 
-        if (Input.GetButton("Horizontal"))
+        if (Input.GetButton("Horizontal") && !GameInput.IsOverUI())
         {
             dir += new Vector3(1f, 0, 0) * Input.GetAxis("Horizontal");
         }
 
-        if (Input.GetButton("Vertical"))
+        if (Input.GetButton("Vertical") && !GameInput.IsOverUI())
         {
             dir += new Vector3(0, 1f, 0) * Input.GetAxis("Vertical");
         }

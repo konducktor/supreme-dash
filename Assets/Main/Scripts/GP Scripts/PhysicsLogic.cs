@@ -17,7 +17,7 @@ public class PhysicsLogic : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Vector3.Distance(tf.position, player.position) < 10f)
+        if (player && Vector3.Distance(tf.position, player.position) < 10f)
         {
             rb.isKinematic = false;
         }
