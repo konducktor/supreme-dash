@@ -74,7 +74,6 @@ public class EditorLogic : MonoBehaviour
     private bool conditions;
     void Update()
     {
-        Debug.Log(EditorLogic.bgColor);
         conditions =
             objects.Exists(a => RoundVector(a.pos, 0) == RoundVector(GameInput.Pointer(), 0)) &&
             objects.Exists(b => b.rot == EditorCursor.currentRotation) &&

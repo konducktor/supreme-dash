@@ -4,16 +4,11 @@ using UnityEngine.UI;
 
 public class FinishLogic : MonoBehaviour
 {
-    [SerializeField] private GameObject finishMenu;
-
-    void OnTriggerEnter2D(Collider2D collider) //collider.GetComponent<FinishLogic>().isCustom
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (!collider.CompareTag("Player"))
+        if (collider.CompareTag("Player"))
         {
-            return;
+            GameObject.Find("Main").GetComponent<GameLoader>().finishMenu.SetActive(true);
         }
-
-        Instantiate(finishMenu);
-
     }
 }
