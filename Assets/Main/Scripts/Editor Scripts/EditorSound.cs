@@ -11,16 +11,18 @@ public class EditorSound : MonoBehaviour
     public static int songID;
 
     public static string[] songs = new string[] {
-        "ExplorersSong",
-        "FirebirdSong",
-        "AllINeedSong",
-        "ClubstepSong",
-        "LevelDeathSong",
-        "UnknownCreatureSong",
-        "QubitstepSong",
-        "MagicRecordsSong",
-        "WonderlandSong",
-        "VirusSong"
+        "Peaceful",
+        "Chromedry",
+        "Inquiry",
+        "Coherent",
+        "Endemic",
+        "Presence",
+        "Absence",
+        "Ascension",
+        "Inveterate",
+        "Enquiry",
+        "Eternity",
+        "Mental Disorder"
     };
 
     void Awake()

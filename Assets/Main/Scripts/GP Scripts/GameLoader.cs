@@ -56,6 +56,7 @@ public class GameLoader : MonoBehaviour
 
     public void Exit()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(ExitScene);
         ExitScene = "Menu";
     }

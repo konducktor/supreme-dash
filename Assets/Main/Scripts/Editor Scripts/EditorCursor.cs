@@ -5,20 +5,20 @@ using UnityEngine;
 
 public class EditorCursor : MonoBehaviour
 {
-
     [SerializeField] private Camera editorCamera;
     [SerializeField] private Sprite[] sprites;
 
     public static Vector3 mousePos;
 
     public static Vector3 objRotation;
+    public static Vector3 currentRotation;
 
     void Start()
     {
         objRotation = Vector3.zero;
+        currentRotation = Vector3.zero;
     }
 
-    public static Vector3 currentRotation = new Vector3();
     void Update()
     {
 

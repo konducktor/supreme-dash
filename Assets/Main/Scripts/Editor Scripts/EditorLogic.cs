@@ -27,7 +27,7 @@ public class EditorLogic : MonoBehaviour
         public bool deco;
         public int layer;
 
-        public SavedObject(int objID, Vector3 position, Vector3 rotation, Color color, Vector3 scale)
+        public SavedObject(int objID, Vector3 position, Vector3 rotation, Color color, Vector3 scale, int layer = 0)
         {
             this.id = objID;
             this.pos = position;
@@ -35,7 +35,7 @@ public class EditorLogic : MonoBehaviour
             this.col = color;
             this.scale = scale;
             this.deco = false;
-            this.layer = 0;
+            this.layer = layer;
         }
     }
 
@@ -93,7 +93,8 @@ public class EditorLogic : MonoBehaviour
                 currentObject.transform.position,
                 EditorCursor.objRotation,
                 EditorSelector.currentObjectColor,
-                EditorSelector.currentObjectScale
+                EditorSelector.currentObjectScale,
+                LayerManager.currentLayer
             ));
 
         }
