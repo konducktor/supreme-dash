@@ -10,7 +10,6 @@ public class MainMenu : MonoBehaviour
         AudioListener.volume = PlayerPrefs.GetFloat("Volume", 1);
         if (EditorLogic.levelName != null)
         {
-            Debug.Log(EditorLogic.levelName);
             levelName.text = EditorLogic.levelName;
         }
     }

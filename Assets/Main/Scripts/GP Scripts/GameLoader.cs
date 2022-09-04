@@ -16,6 +16,7 @@ public class GameLoader : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1f;
         finishMenu.SetActive(false);
 
         Camera cam = GameObject.Find("Main Camera").GetComponent<Camera>();

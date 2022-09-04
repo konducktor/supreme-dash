@@ -68,8 +68,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbfd0d8abbdbd4807a94f877b99a02fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cube: {fileID: 0}
-  ball: {fileID: 0}
+  gameModes:
+  - {fileID: 7955668796357306296}
+  - {fileID: 6974515961540636714}
   speed: 7
 --- !u!1 &142299714497624031
 GameObject:

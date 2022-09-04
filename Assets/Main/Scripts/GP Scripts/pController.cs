@@ -4,17 +4,20 @@ using UnityEngine.SceneManagement;
 
 public class pController : MonoBehaviour
 {
+    class CheckpointSave
+    {
+        public string mode = "cube";
+        public float speed = 7f;
+    }
 
-    [SerializeField] private GameObject cube;
-    [SerializeField] private GameObject ball;
-
+    [SerializeField] private GameObject[] gameModes;
     [SerializeField] public float speed = 7f;
+
     private Rigidbody2D rb;
-
     private Vector3 startPos;
-
     private string gameMode;
-    private string savedGameMode;
+
+    CheckpointSave checkpointSave;
     private static bool IsAbleToChange = true;
 
     private void Start()
@@ -22,8 +25,8 @@ public class pController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         startPos = transform.position;
 
-        savedGameMode = "cube";
-        gameMode = "cube";
+        checkpointSave = new CheckpointSave();
+        SetGamemode("cube");
     }
 
     private void Update()
@@ -31,95 +34,53 @@ public class pController : MonoBehaviour
         rb.velocity = new Vector2(GameInput.HorizontalConstrolls() * speed, rb.velocity.y);
         if (GameInput.IsVerticalControlls())
         {
-            string text = gameMode;
-            if (text != null)
+            switch (gameMode)
             {
-                if (!(text == "cube"))
-                {
-                    if (text == "ball")
-                    {
-                        if (GameInput.ButtonDown())
-                        {
-                            rb.gravityScale *= -1f;
-                        }
-                    }
-                }
-                else
-                {
+                case "cube":
                     rb.AddForce(Vector2.up * 1400f * Time.deltaTime);
-                }
+                    break;
+
+                case "ball":
+                    if (GameInput.ButtonDown()) rb.gravityScale *= -1f;
+                    break;
             }
+
         }
+
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
-    private void ResetPosition()
-    {
-        transform.position = startPos;
-        speed = 7f;
-        gameMode = savedGameMode;
-        cube.SetActive(false);
-        ball.SetActive(false);
-        string text = gameMode;
-        if (text != null)
-        {
-            if (!(text == "cube"))
-            {
-                if (text == "ball")
-                {
-                    ball.SetActive(true);
-                }
-            }
-            else
-            {
-                cube.SetActive(true);
-            }
-        }
-        rb.gravityScale = 1f;
-        rb.MoveRotation(0f);
-        rb.velocity = new Vector3(0f, 0f);
-    }
-
-
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.CompareTag("EndPoint"))
+        switch (collider.tag)
         {
-            Object.Destroy(gameObject);
-            return;
-        }
+            case "EndPoint":
+                Destroy(gameObject);
+                break;
 
-        if (collider.CompareTag("Checkpoint"))
-        {
-            savedGameMode = gameMode;
-            startPos = collider.transform.position;
-            return;
-        }
+            case "Checkpoint":
+                checkpointSave.mode = gameMode;
+                checkpointSave.speed = speed;
 
-        if (collider.CompareTag("Spike"))
-        {
-            ResetPosition();
-            return;
-        }
+                startPos = collider.transform.position;
+                break;
 
-        if (collider.CompareTag("BallPortal") && IsAbleToChange)
-        {
-            gameMode = "cube";
-            rb.gravityScale = 1f;
+            case "Spike":
+                ResetPosition();
+                break;
 
-            if (!ball.activeSelf)
-            {
-                gameMode = "ball";
-                rb.gravityScale = 2f;
-            }
+            case "BallPortal":
+                if (IsAbleToChange)
+                {
+                    SetGamemode((gameMode == "ball") ? "cube" : "ball");
+                    rb.gravityScale = (gameMode == "ball") ? 1f : 2f;
 
-            cube.SetActive(!cube.activeSelf);
-            ball.SetActive(!ball.activeSelf);
-
-            StartCoroutine(Ball());
+                    StartCoroutine(Ball());
+                }
+                break;
         }
     }
 
@@ -130,5 +91,34 @@ public class pController : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         IsAbleToChange = true;
+    }
+
+    private void SetGamemode(string mode = "cube")
+    {
+        gameMode = mode;
+
+        foreach (GameObject currentMode in gameModes)
+        {
+            currentMode.SetActive(false);
+            if (currentMode.name.ToLower() == mode)
+            {
+                currentMode.SetActive(true);
+            }
+
+        }
+    }
+
+    private void ResetPosition()
+    {
+        transform.position = startPos;
+
+        speed = checkpointSave.speed;
+        gameMode = checkpointSave.mode;
+
+        SetGamemode(gameMode);
+
+        rb.gravityScale = (gameMode == "cube") ? 1f : 2f;
+        rb.MoveRotation(0f);
+        rb.velocity = Vector3.zero;
     }
 }

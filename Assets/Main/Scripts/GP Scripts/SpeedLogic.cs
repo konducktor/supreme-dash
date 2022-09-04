@@ -8,11 +8,10 @@ public class SpeedLogic : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (!collider.CompareTag("Player"))
+        if (collider.CompareTag("Player"))
         {
-            return;
+            Debug.Log(collider.GetComponentInParent<pController>());
+            collider.GetComponentInParent<pController>().speed = changeSpeed;
         }
-  
-        collider.GetComponent<pController>().speed = changeSpeed;
     }
 }
