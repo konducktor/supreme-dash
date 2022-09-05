@@ -84,7 +84,9 @@ public class EditorLogic : MonoBehaviour
         if (GameInput.Build() && !conditions && objectID != 11)
         {
             currentObject = Instantiate(gameObjects[objectID], GameInput.Pointer(), Quaternion.Euler(EditorCursor.objRotation));
+
             currentObject.GetComponent<SpriteRenderer>().color = EditorSelector.currentObjectColor;
+            currentObject.GetComponent<SpriteRenderer>().sortingOrder = LayerManager.currentLayer;
             currentObject.transform.localScale = EditorSelector.currentObjectScale;
 
             level.Add(currentObject);

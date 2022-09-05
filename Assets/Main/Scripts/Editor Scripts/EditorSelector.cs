@@ -33,8 +33,7 @@ public class EditorSelector : MonoBehaviour
 
     public void EndEdit()
     {
-        SetObjOpacity(EditorLogic.level, 1f);
-        SetObjOpacity(EditorLogic.level, lastSelected);
+        LayerManager.SetOpacity();
 
         lastSelected.Clear();
         isEditing = false;
@@ -49,7 +48,7 @@ public class EditorSelector : MonoBehaviour
             lastSelected.Clear();
         }
 
-        SetObjOpacity(EditorLogic.level, 0.3f);
+        SetObjOpacity(EditorLogic.level, 0.2f);
         SetObjOpacity(EditorLogic.level, lastSelected);
 
         SelectObjects();
@@ -161,10 +160,8 @@ public class EditorSelector : MonoBehaviour
             Color color = EditorLogic.level[index].GetComponent<SpriteRenderer>().color;
             color.a = a;
             EditorLogic.level[index].GetComponent<SpriteRenderer>().color = color;
+
             EditorLogic.objects[index].col.a = a;
-            Color color2 = cursor.GetComponent<SpriteRenderer>().color;
-            color2.a = a;
-            cursor.GetComponent<SpriteRenderer>().color = color2;
         }
     }
 
@@ -235,6 +232,24 @@ public class EditorSelector : MonoBehaviour
         positionY.text = "";
     }
 
+    public void ObjectLayer(InputField layer)
+    {
+        int num = Convert.ToInt32(layer.text);
+        foreach (int i in lastSelected)
+        {
+            EditorLogic.level[i].GetComponent<SpriteRenderer>().sortingOrder = num + 100;
+            EditorLogic.objects[i].layer = num + 100;
+        }
+    }
+
+    public void IsDeco(bool value)
+    {
+        foreach (int index in EditorSelector.lastSelected)
+        {
+            EditorLogic.objects[index].deco = value;
+        }
+    }
+
 
     void SetObjOpacity(List<GameObject> objects, List<int> IDs)
     {
@@ -251,6 +266,10 @@ public class EditorSelector : MonoBehaviour
         {
             Color col = e.GetComponent<SpriteRenderer>().color;
             col.a = opacity;
+            if (e.GetComponent<SpriteRenderer>().sortingOrder == LayerManager.currentLayer)
+            {
+                col.a = opacity * 3f;
+            }
             e.GetComponent<SpriteRenderer>().color = col;
         }
     }

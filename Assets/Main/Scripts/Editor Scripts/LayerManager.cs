@@ -8,12 +8,13 @@ public class LayerManager : MonoBehaviour
 {
     private InputField number;
 
-    public static int currentLayer = 0;
+    public static int currentLayer;
 
     void Start()
     {
+        currentLayer = 100;
         number = transform.GetComponentInChildren<InputField>();
-        number.text = currentLayer.ToString();
+        number.text = (currentLayer - 100).ToString();
 
         SetOpacity();
     }
@@ -21,19 +22,19 @@ public class LayerManager : MonoBehaviour
     public void Change(int value)
     {
         currentLayer += value;
-        number.text = currentLayer.ToString();
+        number.text = (currentLayer - 100).ToString();
 
         SetOpacity();
     }
 
     public void Set()
     {
-        currentLayer = (int)Convert.ToDecimal(number.text);
+        currentLayer = (int)Convert.ToDecimal(number.text) + 100;
 
         SetOpacity();
     }
 
-    void SetOpacity()
+    public static void SetOpacity()
     {
         for (int i = 0; i < Convert.ToInt32(EditorLogic.objects.Count); i++)
         {
@@ -42,7 +43,7 @@ public class LayerManager : MonoBehaviour
             col.a = 0.3f;
             if (EditorLogic.objects[i].layer == currentLayer)
             {
-                col.a = 1f;
+                col.a = EditorLogic.objects[i].col.a;
             }
 
             EditorLogic.level[i].GetComponent<SpriteRenderer>().color = col;
