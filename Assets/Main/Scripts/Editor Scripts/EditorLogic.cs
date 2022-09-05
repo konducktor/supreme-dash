@@ -74,11 +74,12 @@ public class EditorLogic : MonoBehaviour
     private bool conditions;
     void Update()
     {
-        conditions =
-            objects.Exists(a => RoundVector(a.pos, 0) == RoundVector(GameInput.Pointer(), 0)) &&
-            objects.Exists(b => b.rot == EditorCursor.currentRotation) &&
-            objects.Exists(c => c.id == objectID)
-        ;
+        conditions = objects.Exists(a =>
+            RoundVector(a.pos, 0) == RoundVector(GameInput.Pointer(), 0) &&
+            a.rot == EditorCursor.currentRotation &&
+            a.id == objectID &&
+            a.layer == LayerManager.currentLayer
+        );
 
 
         if (GameInput.Build() && !conditions && objectID != 11)

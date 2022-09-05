@@ -58,7 +58,7 @@ public class SaveLoader : MonoBehaviour
             if (EditorLogic.objects[i].deco)
                 obj.AddField("deco", EditorLogic.objects[i].deco);
             if (EditorLogic.objects[i].layer != 0)
-                obj.AddField("layer", EditorLogic.objects[i].layer);
+                obj.AddField("layer", EditorLogic.objects[i].layer - 100);
 
             objectArray.Add(obj);
         }
@@ -148,17 +148,17 @@ public class SaveLoader : MonoBehaviour
 
             EditorLogic.objects.Add(new EditorLogic.SavedObject(objID, pos, rot, col, scale));
 
-            if (layer != 0)
-            {
-                EditorLogic.objects[EditorLogic.objects.Count - 1].layer = layer;
-                importedLevel[importedLevel.Count - 1].GetComponent<SpriteRenderer>().sortingOrder = layer;
-            }
+            EditorLogic.objects[EditorLogic.objects.Count - 1].layer = layer + 100;
+            importedLevel[importedLevel.Count - 1].GetComponent<SpriteRenderer>().sortingOrder = layer + 100;
 
             if (deco)
             {
-                Destroy(importedLevel[importedLevel.Count - 1].GetComponent<Rigidbody2D>());
-                Destroy(importedLevel[importedLevel.Count - 1].GetComponent<PhysicsLogic>());
-                Destroy(importedLevel[importedLevel.Count - 1].GetComponent<Collider2D>());
+                for (int i = 0; i < 2; i++)
+                {
+                    Destroy(importedLevel[importedLevel.Count - 1].GetComponent<Rigidbody2D>());
+                    Destroy(importedLevel[importedLevel.Count - 1].GetComponent<PhysicsLogic>());
+                    Destroy(importedLevel[importedLevel.Count - 1].GetComponent<Collider2D>());
+                }
             }
         }
 

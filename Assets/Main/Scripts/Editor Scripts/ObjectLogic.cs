@@ -14,7 +14,7 @@ public class ObjectLogic : MonoBehaviour
 
     void OnMouseOver()
     {
-        if (GameInput.Delete())
+        if (EditorLogic.objects[objectIndex].layer == LayerManager.currentLayer && GameInput.Delete())
         {
             EditorLogic.level.RemoveAt(objectIndex);
             EditorLogic.objects.RemoveAt(objectIndex);
