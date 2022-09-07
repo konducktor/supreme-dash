@@ -15,8 +15,8 @@ public class LevelElementScript : MonoBehaviour
 
     public void SetName()
     {
-        File.Delete(Path.Combine(Application.persistentDataPath, nameText.text) + ".txt");
-        File.Move(Path.Combine(Application.persistentDataPath, currentName) + ".txt", Path.Combine(Application.persistentDataPath, nameText.text) + ".txt");
+        File.Delete(Path.Combine(Application.persistentDataPath, nameText.text.ToLower()) + ".txt");
+        File.Move(Path.Combine(Application.persistentDataPath, currentName.ToLower()) + ".txt", Path.Combine(Application.persistentDataPath, nameText.text.ToLower()) + ".txt");
 
         currentName = nameText.text;
     }
