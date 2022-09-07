@@ -5,7 +5,7 @@ using System.IO;
 
 public class EditorSound : MonoBehaviour
 {
-    [SerializeField] private InputField songInput;
+    [SerializeField] private Text text;
     private AudioSource source;
 
     public static int songID;
@@ -33,18 +33,18 @@ public class EditorSound : MonoBehaviour
 
     void Start()
     {
-        source.Play();
+        ChangeSong(0);
     }
 
-    public void Song()
+    public void ChangeSong(int changeBy)
     {
-        int.TryParse(songInput.text, out int result);
+        songID += changeBy;
+        text.text = songs[songID];
 
         source.Stop();
-        source.clip = Resources.Load<AudioClip>(Path.Combine("Sounds/", songs[result]));
+        source.clip = Resources.Load<AudioClip>(Path.Combine("Sounds/", songs[songID]));
         source.Play();
 
-        songID = result;
         Resources.UnloadUnusedAssets();
     }
 }

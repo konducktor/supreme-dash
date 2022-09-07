@@ -33,7 +33,6 @@ public class ServerLogic : MonoBehaviour
     [SerializeField] private InputField password;
     [SerializeField] private Text currentAccount;
 
-    [SerializeField] private InputField levelName;
     [SerializeField] private Text publishResult;
 
     [SerializeField] private InputField searchInput;
@@ -84,9 +83,9 @@ public class ServerLogic : MonoBehaviour
         StartCoroutine(Send(url, keys, values));
     }
 
-    public void SendLevel()
+    public void SendLevel(InputField name)
     {
-        EditorLogic.levelName = levelName.text;
+        EditorLogic.levelName = name.text;
         string path = string.Concat(Application.persistentDataPath + "/", EditorLogic.levelName.ToLower() + ".txt");
         string data = File.ReadAllText(path);
 

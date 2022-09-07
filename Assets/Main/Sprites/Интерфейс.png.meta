@@ -592,7 +592,7 @@ TextureImporter:
         width: 294
         height: 293
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -600,6 +600,69 @@ TextureImporter:
       bones: []
       spriteID: 902aa2a9b68d7496fab761e4ecdef928
       internalID: 630403291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UploadSmall
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 1602
+        width: 149
+        height: 149
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e04468fa8574a40538515402e21e83e0
+      internalID: -65220545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BuildSmall
+      rect:
+        serializedVersion: 2
+        x: 887
+        y: 1602
+        width: 149
+        height: 149
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92b5fc30f0995486780928d84a3b5be1
+      internalID: -1964049547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlaySmall
+      rect:
+        serializedVersion: 2
+        x: 1036
+        y: 1602
+        width: 149
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f89f7e1921aad487393ed8dcb81bf90a
+      internalID: -2055663939
       vertices: []
       indices: 
       edges: []
@@ -630,9 +693,12 @@ TextureImporter:
       ExitEditor: 1613868908823004423
       Button1: -6973324265583258322
       Delete: 6215199805178662040
+      BuildSmall: -1964049547
       Editor: -210010102667714848
       Icons: 2836915749624894453
+      UploadSmall: -65220545
       Playtest: 2305446016025343602
+      PlaySmall: -2055663939
       Button2: 2921063373799211753
       EditorObj: 79262543149503620
       RotateRight: 6203240909911375993
