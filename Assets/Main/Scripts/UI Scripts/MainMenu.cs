@@ -8,9 +8,5 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         AudioListener.volume = PlayerPrefs.GetFloat("Volume", 1);
-        if (EditorLogic.levelName != null)
-        {
-            levelName.text = EditorLogic.levelName;
-        }
     }
 }

@@ -39,6 +39,9 @@ public class EditorSound : MonoBehaviour
     public void ChangeSong(int changeBy)
     {
         songID += changeBy;
+        if (songID < 0) songID = songs.Length - 1;
+        else if (songID >= songs.Length) songID = 0;
+
         text.text = songs[songID];
 
         source.Stop();

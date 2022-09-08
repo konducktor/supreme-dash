@@ -200,7 +200,7 @@ public class EditorSelector : MonoBehaviour
         }
 
         cursor.transform.localScale = currentObjectScale;
-
+        objectScale.text = "";
     }
 
 
@@ -230,6 +230,36 @@ public class EditorSelector : MonoBehaviour
             savedObject.pos.y = savedObject.pos.y + num;
         }
         positionY.text = "";
+    }
+
+    public void ObjectRotation(InputField rotation)
+    {
+        Vector3 center = GetCenter();
+        float num = (float)Convert.ToDecimal(rotation.text);
+
+        foreach (int index in lastSelected)
+        {
+            EditorLogic.level[index].transform.RotateAround(center, Vector3.back, num);
+
+            EditorLogic.objects[index].rot = EditorLogic.level[index].transform.eulerAngles;
+            EditorLogic.objects[index].pos = EditorLogic.level[index].transform.position;
+        }
+
+        cursor.transform.eulerAngles = new Vector3(0f, 0f, num);
+        rotation.text = "";
+    }
+
+    public void IndividualObjectRotation(InputField individualRotation)
+    {
+        float num = (float)Convert.ToDecimal(individualRotation.text);
+
+        foreach (int index in lastSelected)
+        {
+            EditorLogic.level[index].transform.eulerAngles = new Vector3(0f, 0f, num);
+            EditorLogic.objects[index].rot = new Vector3(0f, 0f, num);
+        }
+
+        cursor.transform.eulerAngles = new Vector3(0f, 0f, num);
     }
 
     public void ObjectLayer(InputField layer)
