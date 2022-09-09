@@ -9,7 +9,7 @@ using Defective.JSON;
 
 public class EditorLogic : MonoBehaviour
 {
-    public static string levelName;
+    public static string levelData;
     public static int objectID = 0;
     public static GameObject[] gameObjects;
     [SerializeField] private GameObject[] inputObjects;
@@ -55,12 +55,10 @@ public class EditorLogic : MonoBehaviour
         level.Clear();
         objects.Clear();
 
-        if (EditorLogic.levelName != null)
-        {
-            level = SaveLoader.JSONToLevel(SaveLoader.Load(), cam, gameObjects, GetComponent<AudioSource>());
-        }
+        if (EditorLogic.levelData == null) EditorLogic.levelData = SaveLoader.LoadFile();
+        level = SaveLoader.JSONToLevel(levelData, cam, gameObjects, GetComponent<AudioSource>());
 
-        EditorLogic.bgColor = this.cam.backgroundColor;
+        EditorLogic.bgColor = cam.backgroundColor;
     }
 
     public static Vector3 RoundVector(Vector3 vec, int amount)

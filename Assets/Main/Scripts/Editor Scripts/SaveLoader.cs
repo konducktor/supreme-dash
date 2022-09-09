@@ -7,29 +7,31 @@ using Defective.JSON;
 
 public class SaveLoader : MonoBehaviour
 {
-    static string path;
 
-    void Awake()
-    {
-        path = EditorLogic.levelName != null ? Path.Combine(Application.persistentDataPath, EditorLogic.levelName.ToLower() + ".txt") : string.Empty;
-    }
+    static string lastName;
 
-    public static void Save()
+    public static void SaveFile()
     {
         string levelString = LevelToJSON();
 
-        File.WriteAllText(path, levelString);
+        File.WriteAllText(Path.Combine(Application.persistentDataPath, lastName + ".txt"), levelString);
+        EditorLogic.levelData = null;
     }
 
-    public static string Load()
+    public static string LoadFile(string name = "")
     {
-        string inputLevel = "";
+        if (name == string.Empty) name = lastName;
+
+        lastName = name;
+
+        string path = Path.Combine(Application.persistentDataPath, name + ".txt");
+        string inputLevel = string.Empty;
 
         if (File.Exists(path))
         {
             inputLevel = File.ReadAllText(path);
-
         }
+
 
         return inputLevel;
     }

@@ -24,10 +24,8 @@ public class GameLoader : MonoBehaviour
 
         AudioSource source = GetComponent<AudioSource>();
 
-        if (EditorLogic.levelName != null)
-        {
-            SaveLoader.JSONToLevel(SaveLoader.Load(), cam, gameObjects, source);
-        }
+        if (EditorLogic.levelData == null) EditorLogic.levelData = SaveLoader.LoadFile();
+        SaveLoader.JSONToLevel(EditorLogic.levelData, cam, gameObjects, source);
 
         EditorLogic.bgColor = cam.backgroundColor;
         BG.color = EditorLogic.bgColor;

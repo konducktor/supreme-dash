@@ -60,6 +60,7 @@
      <Compile Include="Assets/Main/Scripts/UI Scripts/SelectIcon.cs" />
      <Compile Include="Assets/Main/Scripts/GP Scripts/BGLogic.cs" />
      <Compile Include="Assets/Other/JSON/JSONObject.cs" />
+     <Compile Include="Assets/Main/Scripts/GP Scripts/TimerScript.cs" />
      <Compile Include="Assets/Other/JSON/VectorTemplates.cs" />
      <Compile Include="Assets/Main/Scripts/GP Scripts/FinishLogic.cs" />
      <Compile Include="Assets/Main/Scripts/Editor Scripts/EditorCam.cs" />
@@ -77,7 +78,6 @@
      <Compile Include="Assets/Main/Scripts/GP Scripts/pController.cs" />
      <Compile Include="Assets/Main/Scripts/GP Scripts/Portal.cs" />
      <Compile Include="Assets/Main/Scripts/GP Scripts/PhysicsLogic.cs" />
-     <Compile Include="Assets/Main/Scripts/GP Scripts/TimerScript.cs" />
     <Reference Include="UnityEngine">
         <HintPath>/Applications/Unity/Hub/Editor/2021.3.8f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

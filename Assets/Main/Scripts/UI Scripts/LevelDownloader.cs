@@ -22,7 +22,7 @@ public class LevelDownloader : MonoBehaviour
         ID = info[0].text;
         levelName = info[1].text;
 
-        path = string.Concat(Application.persistentDataPath + "/", levelName.ToLower() + ".txt");
+        path = string.Concat(Application.persistentDataPath + "/", levelName + ".txt");
 
         url = "https://beloeozero.ru/ppdsh/levels/" + ID + ".txt";
 
@@ -41,9 +41,7 @@ public class LevelDownloader : MonoBehaviour
             yield break;
         }
 
-        File.WriteAllText(path, level.downloadHandler.text);
-
-        EditorLogic.levelName = levelName;
+        EditorLogic.levelData = level.downloadHandler.text;
         SceneManager.LoadScene("CustomLevel");
 
     }

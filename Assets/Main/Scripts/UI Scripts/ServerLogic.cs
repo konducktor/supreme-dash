@@ -85,16 +85,12 @@ public class ServerLogic : MonoBehaviour
 
     public void SendLevel(InputField name)
     {
-        EditorLogic.levelName = name.text;
-        string path = string.Concat(Application.persistentDataPath + "/", EditorLogic.levelName.ToLower() + ".txt");
-        string data = File.ReadAllText(path);
-
         url = "levelsend.php";
         keys = new string[] { "login", "password", "levelName", "levelData" };
         values = new string[] {
             PlayerPrefs.GetString("Login"),
             PlayerPrefs.GetString("Password"),
-            EditorLogic.levelName, data
+            name.text, SaveLoader.LoadFile(name.text)
         };
 
         StartCoroutine(Send(url, keys, values));

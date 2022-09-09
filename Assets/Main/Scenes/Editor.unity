@@ -2013,7 +2013,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2759655972472130147, guid: 34df470c31d4545dcb56969b33554c75, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Save
+      value: SaveFile
       objectReference: {fileID: 0}
     - target: {fileID: 2759655972472130147, guid: 34df470c31d4545dcb56969b33554c75, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -3938,6 +3938,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa28ecbdfbc8a2c47b4d49d6ddaa9d8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mobile: 0
 --- !u!1 &842463706
 GameObject:
   m_ObjectHideFlags: 0
@@ -9842,7 +9843,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2759655972472130147, guid: 34df470c31d4545dcb56969b33554c75, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Save
+      value: SaveFile
       objectReference: {fileID: 0}
     - target: {fileID: 2759655972472130147, guid: 34df470c31d4545dcb56969b33554c75, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -11261,7 +11262,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9010329099076438071, guid: e2012600f3f684b678c808e49fe05c82, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Save
+      value: SaveFile
       objectReference: {fileID: 0}
     - target: {fileID: 9010329099076438071, guid: e2012600f3f684b678c808e49fe05c82, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName

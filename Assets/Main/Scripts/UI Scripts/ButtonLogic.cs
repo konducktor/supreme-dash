@@ -15,7 +15,7 @@ public class ButtonLogic : MonoBehaviour //НИКОГДА В ЖИЗНИ ТАК �
 
     public void SetLevel(InputField levelName)
     {
-        EditorLogic.levelName = levelName.text;
+        EditorLogic.levelData = SaveLoader.LoadFile(levelName.text);
     }
 
     public void Quit()
