@@ -125,6 +125,23 @@ public class EditorSelector : MonoBehaviour
     }
 
 
+    public void CopyPaste()
+    {
+        foreach (int i in lastSelected)
+        {
+            EditorLogic.SavedObject saveObject = EditorLogic.objects[i];
+
+            EditorLogic.level.Add(Instantiate(EditorLogic.level[i]));
+            EditorLogic.objects.Add(new EditorLogic.SavedObject(
+                saveObject.id, saveObject.pos,
+                saveObject.rot, saveObject.col,
+                saveObject.scale, saveObject.layer,
+                saveObject.deco
+            ));
+        }
+    }
+
+
     public static Color currentObjectColor;
     public void ObjectColor(InputField objectColor)
     {

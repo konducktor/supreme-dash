@@ -35,8 +35,11 @@ public class GameLoader : MonoBehaviour
         source.Play();
     }
 
+    public float timer = 0f;
+
     void Update()
     {
+        timer += Time.deltaTime;
         if (Input.GetKeyDown(KeyCode.Escape))
             SwitchPause();
     }

@@ -655,7 +655,7 @@ TextureImporter:
         width: 149
         height: 149
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -663,6 +663,27 @@ TextureImporter:
       bones: []
       spriteID: f89f7e1921aad487393ed8dcb81bf90a
       internalID: -2055663939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CopyPaste
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 613
+        width: 289
+        height: 289
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7b0dc76f9db1464fbed40eb8b8413bb
+      internalID: -1396466352
       vertices: []
       indices: 
       edges: []
@@ -699,6 +720,7 @@ TextureImporter:
       UploadSmall: -65220545
       Playtest: 2305446016025343602
       PlaySmall: -2055663939
+      CopyPaste: -1396466352
       Button2: 2921063373799211753
       EditorObj: 79262543149503620
       RotateRight: 6203240909911375993

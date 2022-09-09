@@ -27,15 +27,15 @@ public class EditorLogic : MonoBehaviour
         public bool deco;
         public int layer;
 
-        public SavedObject(int objID, Vector3 position, Vector3 rotation, Color color, Vector3 scale, int layer = 0)
+        public SavedObject(int objID, Vector3 position, Vector3 rotation, Color color, Vector3 scale, int layer = 0, bool deco = false)
         {
             this.id = objID;
             this.pos = position;
             this.rot = rotation;
             this.col = color;
             this.scale = scale;
-            this.deco = false;
             this.layer = layer;
+            this.deco = deco;
         }
     }
 

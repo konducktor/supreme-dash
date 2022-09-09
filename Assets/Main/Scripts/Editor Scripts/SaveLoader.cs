@@ -153,6 +153,8 @@ public class SaveLoader : MonoBehaviour
 
             if (deco)
             {
+                EditorLogic.objects[EditorLogic.objects.Count - 1].deco = deco;
+
                 for (int i = 0; i < 2; i++)
                 {
                     Destroy(importedLevel[importedLevel.Count - 1].GetComponent<Rigidbody2D>());

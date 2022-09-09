@@ -6,8 +6,8 @@ public class SetObjID : MonoBehaviour
 {
     [SerializeField] int newID;
 
-    public void ChangeID()
+    public void ChangeID(int ID)
     {
-        EditorLogic.objectID = newID;
+        EditorLogic.objectID = ID;
     }
 }
