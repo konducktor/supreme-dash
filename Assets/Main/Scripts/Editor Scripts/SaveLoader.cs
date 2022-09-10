@@ -92,6 +92,7 @@ public class SaveLoader : MonoBehaviour
                     cam.backgroundColor = element.ToColor();
                     break;
                 case "song":
+                    songID = element.intValue;
                     audio.clip = Resources.Load<AudioClip>(Path.Combine("Sounds/", EditorSound.songs[element.intValue]));
                     break;
                 case "startpos":

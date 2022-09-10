@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class MobileOnly : MonoBehaviour
 {
-    [SerializeField] bool mobile = false;
+    [SerializeField] bool forMobile = true;
 
     void Start()
     {
         if (SystemInfo.deviceType != DeviceType.Handheld)
-            gameObject.SetActive(mobile);
+            gameObject.SetActive(!forMobile);
     }
 }

@@ -43,11 +43,6 @@ public class EditorSelector : MonoBehaviour
     {
         if (!isEditing) return;
 
-        if (!GameInput.Shift() && newSelected.Count > 0)
-        {
-            lastSelected.Clear();
-        }
-
         SetObjOpacity(EditorLogic.level, 0.2f);
         SetObjOpacity(EditorLogic.level, lastSelected);
 
@@ -66,27 +61,18 @@ public class EditorSelector : MonoBehaviour
             return;
         }
 
-        if (GameInput.Touch())
+        if (GameInput.Touch() && start != Vector3.zero)
         {
-            if (!GameInput.IsOverUI())
-            {
-                selectLine.positionCount = 4;
-                selectLine.SetPosition(0, new Vector2(GameInput.Pointer(0).x, GameInput.Pointer(0).y));
-                selectLine.SetPosition(1, new Vector2(start.x, GameInput.Pointer(0).y));
-                selectLine.SetPosition(2, new Vector2(start.x, start.y));
-                selectLine.SetPosition(3, new Vector2(GameInput.Pointer(0).x, start.y));
-
-                return;
-            }
-
-            selectLine.positionCount = 0;
-            return;
+            selectLine.positionCount = 4;
+            selectLine.SetPosition(0, new Vector2(GameInput.Pointer(0).x, GameInput.Pointer(0).y));
+            selectLine.SetPosition(1, new Vector2(start.x, GameInput.Pointer(0).y));
+            selectLine.SetPosition(2, new Vector2(start.x, start.y));
+            selectLine.SetPosition(3, new Vector2(GameInput.Pointer(0).x, start.y));
         }
         else
         {
-            if (GameInput.TouchUp() && !GameInput.IsOverUI())
+            if (GameInput.TouchUp()) // && !GameInput.IsOverUI()
             {
-
                 end = GameInput.Pointer(0);
 
                 topLeft = new Vector3(start.x, start.y, 0);
@@ -121,6 +107,11 @@ public class EditorSelector : MonoBehaviour
         topLeft = Vector3.zero;
         downRight = Vector3.zero;
 
+        if (!GameInput.Shift() && lastSelected.Count > 0 && !GameInput.IsOverUI())
+        {
+            lastSelected.Clear();
+        }
+
         yield break;
     }
 
@@ -138,6 +129,19 @@ public class EditorSelector : MonoBehaviour
                 saveObject.scale, saveObject.layer,
                 saveObject.deco
             ));
+        }
+    }
+
+    public void Delete()
+    {
+        for (int i = lastSelected.Count - 1; i >= 0; i--)
+        {
+            Destroy(EditorLogic.level[lastSelected[i]]);
+
+            EditorLogic.level.RemoveAt(lastSelected[i]);
+            EditorLogic.objects.RemoveAt(lastSelected[i]);
+
+            lastSelected.RemoveAt(i);
         }
     }
 

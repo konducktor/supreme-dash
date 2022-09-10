@@ -8,6 +8,6 @@ public class TimerScript : MonoBehaviour
     {
         float time = GameObject.Find("Main").GetComponent<GameLoader>().timer;
 
-        gameObject.GetComponent<Text>().text = "Total time: " + EditorCursor.Round(time, 2) + "seconds";
+        gameObject.GetComponent<Text>().text = "Total time: " + EditorCursor.Round(time, 2) + " sec";
     }
 }
