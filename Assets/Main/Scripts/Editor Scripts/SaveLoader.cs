@@ -92,8 +92,9 @@ public class SaveLoader : MonoBehaviour
                     cam.backgroundColor = element.ToColor();
                     break;
                 case "song":
-                    songID = element.intValue;
+                    EditorSound.songID = element.intValue;
                     audio.clip = Resources.Load<AudioClip>(Path.Combine("Sounds/", EditorSound.songs[element.intValue]));
+                    audio.Play();
                     break;
                 case "startpos":
                     GameObject.Find("Player").transform.position = element.ToVector3();
@@ -158,12 +159,9 @@ public class SaveLoader : MonoBehaviour
             {
                 EditorLogic.objects[EditorLogic.objects.Count - 1].deco = deco;
 
-                for (int i = 0; i < 2; i++)
-                {
-                    Destroy(importedLevel[importedLevel.Count - 1].GetComponent<Rigidbody2D>());
-                    Destroy(importedLevel[importedLevel.Count - 1].GetComponent<PhysicsLogic>());
-                    Destroy(importedLevel[importedLevel.Count - 1].GetComponent<Collider2D>());
-                }
+                Destroy(importedLevel[importedLevel.Count - 1].GetComponent<Rigidbody2D>());
+                Destroy(importedLevel[importedLevel.Count - 1].GetComponent<PhysicsLogic>());
+                Destroy(importedLevel[importedLevel.Count - 1].GetComponent<Collider2D>());
             }
         }
 

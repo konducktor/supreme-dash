@@ -33,7 +33,7 @@ public class EditorSound : MonoBehaviour
 
     void Start()
     {
-        ChangeSong(0);
+        text.text = songs[songID];
     }
 
     public void ChangeSong(int changeBy)

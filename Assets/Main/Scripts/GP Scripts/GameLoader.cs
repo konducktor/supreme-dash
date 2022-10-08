@@ -14,7 +14,7 @@ public class GameLoader : MonoBehaviour
 
     public static string ExitScene = "Menu";
 
-    private void Start()
+    private void Awake()
     {
         Time.timeScale = 1f;
         finishMenu.SetActive(false);

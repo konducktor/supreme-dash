@@ -68,10 +68,6 @@ public class pController : MonoBehaviour
                 startPos = collider.transform.position;
                 break;
 
-            case "Spike":
-                ResetPosition();
-                break;
-
             case "BallPortal":
                 if (IsAbleToChange)
                 {
@@ -81,6 +77,14 @@ public class pController : MonoBehaviour
                     StartCoroutine(Ball());
                 }
                 break;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Spike")
+        {
+            ResetPosition();
         }
     }
 
