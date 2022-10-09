@@ -61,6 +61,10 @@ public class pController : MonoBehaviour
                 Destroy(gameObject);
                 break;
 
+            case "Spike":
+                ResetPosition();
+                break;
+
             case "Checkpoint":
                 checkpointSave.mode = gameMode;
                 checkpointSave.speed = speed;

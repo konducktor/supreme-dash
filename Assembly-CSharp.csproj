@@ -41,6 +41,7 @@
      <Compile Include="Assets/Other/Joystick Pack/Scripts/Base/Joystick.cs" />
      <Compile Include="Assets/Main/Scripts/UI Scripts/LevelManager.cs" />
      <Compile Include="Assets/Main/Scripts/UI Scripts/LevelElementScript.cs" />
+     <Compile Include="Assets/Main/Scripts/ChunkLoader.cs" />
      <Compile Include="Assets/Other/Joystick Pack/Scripts/Joysticks/FixedJoystick.cs" />
      <Compile Include="Assets/Main/Scripts/Editor Scripts/SaveLoader.cs" />
      <Compile Include="Assets/Other/Joystick Pack/Scripts/Joysticks/VariableJoystick.cs" />
@@ -48,6 +49,7 @@
      <Compile Include="Assets/Main/Scripts/Editor Scripts/EditorLogic.cs" />
      <Compile Include="Assets/Main/Scripts/UI Scripts/ColorSelector.cs" />
      <Compile Include="Assets/Main/Scripts/Editor Scripts/SetObjID.cs" />
+     <Compile Include="Assets/Main/Scripts/CameraCollider.cs" />
      <Compile Include="Assets/Main/Scripts/Editor Scripts/EditorCursor.cs" />
      <Compile Include="Assets/Main/Scripts/UI Scripts/Leaderboard.cs" />
      <Compile Include="Assets/Main/Scripts/Editor Scripts/LayerManager.cs" />
@@ -77,8 +79,6 @@
      <Compile Include="Assets/Main/Scripts/GP Scripts/GameLoader.cs" />
      <Compile Include="Assets/Main/Scripts/GP Scripts/pController.cs" />
      <Compile Include="Assets/Main/Scripts/GP Scripts/Portal.cs" />
-     <Compile Include="Assets/Main/Scripts/GP Scripts/PhysicsLogic.cs" />
-     <Compile Include="Assets/Main/Scripts/GP Scripts/ChunkLoader.cs" />
     <Reference Include="UnityEngine">
         <HintPath>/Applications/Unity/Hub/Editor/2021.3.8f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

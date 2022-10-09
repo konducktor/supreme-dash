@@ -12,6 +12,8 @@ public class GameLoader : MonoBehaviour
     [SerializeField] public GameObject pauseButton;
     [SerializeField] public Joystick joystick;
 
+    [SerializeField] GameObject chunk;
+
     public static string ExitScene = "Menu";
 
     private void Awake()
@@ -25,7 +27,7 @@ public class GameLoader : MonoBehaviour
         AudioSource source = GetComponent<AudioSource>();
 
         if (EditorLogic.levelData == null) EditorLogic.levelData = SaveLoader.LoadFile();
-        SaveLoader.JSONToLevel(EditorLogic.levelData, cam, gameObjects, source);
+        SaveLoader.JSONToLevel(EditorLogic.levelData, cam, gameObjects, source, chunk);
 
         EditorLogic.bgColor = cam.backgroundColor;
         BG.color = EditorLogic.bgColor;

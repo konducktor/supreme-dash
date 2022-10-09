@@ -45,6 +45,8 @@ public class EditorLogic : MonoBehaviour
 
     private GameObject currentObject;
 
+    [SerializeField] GameObject chunk;
+
 
     void Start()
     {
@@ -56,7 +58,7 @@ public class EditorLogic : MonoBehaviour
         objects.Clear();
 
         if (EditorLogic.levelData == null) EditorLogic.levelData = SaveLoader.LoadFile();
-        level = SaveLoader.JSONToLevel(levelData, cam, gameObjects, GetComponent<AudioSource>());
+        level = SaveLoader.JSONToLevel(levelData, cam, gameObjects, GetComponent<AudioSource>(), chunk);
 
         EditorLogic.bgColor = cam.backgroundColor;
     }

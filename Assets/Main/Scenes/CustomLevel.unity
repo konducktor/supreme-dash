@@ -838,6 +838,7 @@ GameObject:
   - component: {fileID: 1533325328}
   - component: {fileID: 1533325327}
   - component: {fileID: 1533325330}
+  - component: {fileID: 1533325331}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -981,6 +982,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ecdb81b1d0bd4a709901e4c2c5aa04d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1533325331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533325323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40662429cc8ac4ade848450c5ac2bc6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &1809495646 stripped
@@ -1354,6 +1367,7 @@ MonoBehaviour:
   pausePanel: {fileID: 1021580145763518772}
   pauseButton: {fileID: 165707264}
   joystick: {fileID: 1996332138}
+  chunk: {fileID: 2343270573514235922, guid: 6056763f6e361420a94055724adabab4, type: 3}
   timer: 0
 --- !u!82 &2026915794
 AudioSource:

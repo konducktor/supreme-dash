@@ -73,7 +73,7 @@ public class SaveLoader : MonoBehaviour
         return lvl.ToString();
     }
 
-    public static List<GameObject> JSONToLevel(string input, Camera cam, GameObject[] gameObjs, AudioSource audio)
+    public static List<GameObject> JSONToLevel(string input, Camera cam, GameObject[] gameObjs, AudioSource audio, GameObject chunk)
     {
         JSONObject lvl = new JSONObject(input);
         JSONObject data = new JSONObject();
@@ -106,6 +106,9 @@ public class SaveLoader : MonoBehaviour
         EditorLogic.objects = new List<EditorLogic.SavedObject>();
 
         JSONObject obj;
+        GameObject currentObject;
+
+        chunks = new List<GameObject>();
 
         for (int a = 0; a < data.list.Count; a++)
         {
@@ -147,24 +150,63 @@ public class SaveLoader : MonoBehaviour
             }
 
             importedLevel.Add(Instantiate(gameObjs[objID], pos, Quaternion.Euler(rot)));
-            importedLevel[importedLevel.Count - 1].GetComponent<SpriteRenderer>().color = col;
-            importedLevel[importedLevel.Count - 1].transform.localScale = scale;
+            currentObject = importedLevel[importedLevel.Count - 1];
+
+            currentObject.GetComponent<SpriteRenderer>().color = col;
+            currentObject.transform.localScale = scale;
 
             EditorLogic.objects.Add(new EditorLogic.SavedObject(objID, pos, rot, col, scale));
 
             EditorLogic.objects[EditorLogic.objects.Count - 1].layer = layer + 100;
-            importedLevel[importedLevel.Count - 1].GetComponent<SpriteRenderer>().sortingOrder = layer + 100;
+            currentObject.GetComponent<SpriteRenderer>().sortingOrder = layer + 100;
 
             if (deco)
             {
                 EditorLogic.objects[EditorLogic.objects.Count - 1].deco = deco;
 
-                Destroy(importedLevel[importedLevel.Count - 1].GetComponent<Rigidbody2D>());
-                Destroy(importedLevel[importedLevel.Count - 1].GetComponent<PhysicsLogic>());
-                Destroy(importedLevel[importedLevel.Count - 1].GetComponent<Collider2D>());
+                Destroy(currentObject.GetComponent<Rigidbody2D>());
+                Destroy(currentObject.GetComponent<Collider2D>());
+            }
+
+            if (currentObject.GetComponent<Rigidbody2D>() == null || EditorLogic.objects[EditorLogic.objects.Count - 1].deco == true)
+            {
+                SetChunk(currentObject, chunk);
+                currentObject.SetActive(false);
             }
         }
 
         return importedLevel;
+    }
+    static List<GameObject> chunks;
+
+    static void SetChunk(GameObject obj, GameObject chunk)
+    {
+        bool condition;
+        for (int i = 0; i < chunks.Count; i++)
+        {
+            condition =
+                chunks[i].transform.position.x - chunks[i].transform.position.x % 5f ==
+                obj.transform.position.x - obj.transform.position.x % 5f &&
+                chunks[i].transform.position.y - chunks[i].transform.position.y % 5f ==
+                obj.transform.position.y - obj.transform.position.y % 5f
+            ;
+
+            if (condition)
+            {
+                obj.transform.SetParent(chunks[i].transform, true);
+                return;
+            }
+        }
+
+        chunks.Add(Instantiate(chunk));
+
+        chunks[chunks.Count - 1].transform.position = new Vector3
+        (
+            obj.transform.position.x - obj.transform.position.x % 5f,
+            obj.transform.position.y - obj.transform.position.y % 5f,
+            0f
+        );
+
+        obj.transform.SetParent(chunks[chunks.Count - 1].transform, true);
     }
 }
