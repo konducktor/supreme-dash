@@ -676,7 +676,7 @@ TextureImporter:
         width: 289
         height: 289
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -684,6 +684,27 @@ TextureImporter:
       bones: []
       spriteID: c7b0dc76f9db1464fbed40eb8b8413bb
       internalID: -1396466352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shop
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 612
+        width: 289
+        height: 289
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c34159b92ac444e028097fc74374a790
+      internalID: -27502736
       vertices: []
       indices: 
       edges: []
@@ -722,6 +743,7 @@ TextureImporter:
       PlaySmall: -2055663939
       CopyPaste: -1396466352
       Button2: 2921063373799211753
+      Shop: -27502736
       EditorObj: 79262543149503620
       RotateRight: 6203240909911375993
   spritePackingTag: 
