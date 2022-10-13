@@ -46,7 +46,7 @@ public class ServerLogic : MonoBehaviour
     void Start()
     {
         rating = "1";
-        currentAccount.text = "Current: " + PlayerPrefs.GetString("Login", "");
+        currentAccount.text = "Current: " + GlobalData.Login;
         searchPage = 0;
     }
 
@@ -88,8 +88,8 @@ public class ServerLogic : MonoBehaviour
         url = "levelsend.php";
         keys = new string[] { "login", "password", "levelName", "levelData" };
         values = new string[] {
-            PlayerPrefs.GetString("Login"),
-            PlayerPrefs.GetString("Password"),
+            GlobalData.Login,
+            GlobalData.Password,
             name.text, SaveLoader.LoadFile(name.text)
         };
 
@@ -173,9 +173,11 @@ public class ServerLogic : MonoBehaviour
                     break;
                 }
 
-                PlayerPrefs.SetString("Login", values[0]);
-                PlayerPrefs.SetString("Password", values[1]);
+                GlobalData.Login = values[0];
+                GlobalData.Password = values[1];
                 currentAccount.text = "Done! Current: " + values[0];
+
+                GlobalData.SaveLocal();
                 break;
             case "login.php":
                 if (result == "2")
@@ -190,9 +192,11 @@ public class ServerLogic : MonoBehaviour
                     break;
                 }
 
-                PlayerPrefs.SetString("Login", values[0]);
-                PlayerPrefs.SetString("Password", values[1]);
+                GlobalData.Login = values[0];
+                GlobalData.Password = values[1];
                 currentAccount.text = "Done! Current: " + values[0];
+
+                GlobalData.SaveLocal();
                 break;
             case "levelsend.php":
                 if (result == "3")

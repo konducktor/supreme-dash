@@ -5,6 +5,6 @@ public class MainMenu : MonoBehaviour
 {
     void Start()
     {
-        AudioListener.volume = PlayerPrefs.GetFloat("Volume", 1);
+        AudioListener.volume = (float)GlobalData.Volume;
     }
 }

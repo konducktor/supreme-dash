@@ -169,45 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27bf261bd4f1048c997597577b13649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameModeName: Icon
-  icons:
-  - {fileID: 21300000, guid: 49d8c146186ec4d34a710d3f26d89b6c, type: 3}
-  - {fileID: 21300000, guid: b4e97a123062443c4a8a5de4713896fc, type: 3}
-  - {fileID: 21300000, guid: 546e4a1ea89bb442399f5681472e154b, type: 3}
-  - {fileID: 21300000, guid: f64eafe7526a8442b95d543f5064d2c8, type: 3}
-  - {fileID: 21300000, guid: 3f35869b4ed4946cd8bb94602044d19f, type: 3}
-  - {fileID: 21300000, guid: 570d9111c78b94db5a994ca3434cbe22, type: 3}
-  - {fileID: 21300000, guid: 3d1e8476abf2e44489d6b4b0c27a44af, type: 3}
-  - {fileID: 21300000, guid: 9607b79d59b354b8aabc840f268570b5, type: 3}
-  - {fileID: 21300000, guid: 8e438005cfbfb449ea3a6ae6c97cea1d, type: 3}
-  - {fileID: 21300000, guid: 06aff1aad11464a48b0896a73621e848, type: 3}
-  - {fileID: 21300000, guid: 41020dd33801e41a6a0c25140ec2107c, type: 3}
-  - {fileID: 21300000, guid: 303f095e6a7ec45d8aa64d00649fd774, type: 3}
-  - {fileID: 21300000, guid: a158a9f32267c44d7a85ff3368994cff, type: 3}
-  - {fileID: 21300000, guid: 551665b14c3d54890a41862ab34eb3b6, type: 3}
-  - {fileID: 21300000, guid: 9c2ebd54d87b24fce8de2aca458b36f5, type: 3}
-  - {fileID: 21300000, guid: 0e745ee5a52bf4ff0a7e5a321ee85bda, type: 3}
-  - {fileID: 21300000, guid: 4c7c7fcb5a5c74e3d910a8ace470e1aa, type: 3}
-  - {fileID: 21300000, guid: e362a8477fef24c2aa1fc5bec7f5d41d, type: 3}
-  - {fileID: 21300000, guid: 665bd549e420145af85770ce5bea8b57, type: 3}
-  - {fileID: 21300000, guid: 564a8d7152e3247eabf3b2340a14ddab, type: 3}
-  - {fileID: 21300000, guid: 3d83a683d0ca14588ae0740746522283, type: 3}
-  - {fileID: 21300000, guid: 92ce3ba4068f44a39af3c82792774c11, type: 3}
-  - {fileID: 21300000, guid: 8b681ae856d6440d1bba0236b543dcc2, type: 3}
-  - {fileID: 21300000, guid: 73b51be87c54449a5ab2e8a1ae334e21, type: 3}
-  - {fileID: 21300000, guid: 95685a4cd383e4298935565c0d28fe28, type: 3}
-  - {fileID: 21300000, guid: e9fd1a7559895477e91034db08655f3e, type: 3}
-  - {fileID: 21300000, guid: fabcb90c65c8a41c197b3cd2d81044df, type: 3}
-  - {fileID: 21300000, guid: e4d3005e7e5c944529c1d1d4db66c4ac, type: 3}
-  - {fileID: 21300000, guid: 2f65ddd62189e4d56a27c614fa77f062, type: 3}
-  - {fileID: 21300000, guid: b3e96ead4eea6459baf8c521b848bf8d, type: 3}
-  - {fileID: 21300000, guid: 592d04ddcab8349b2bf6e3c7ba1d8992, type: 3}
-  - {fileID: 21300000, guid: c43721325191f4ddba4148a683085f83, type: 3}
-  - {fileID: 21300000, guid: f7ca64147579644e7a9e70f81c2cbfeb, type: 3}
-  - {fileID: 21300000, guid: ddd4ef057630e4065a95315eea9c05b5, type: 3}
-  - {fileID: 21300000, guid: 651a6c146af254b30b0d174f03c1d0d2, type: 3}
-  - {fileID: 21300000, guid: 4cf5cdb9befc842bf945807dc02f3d2f, type: 3}
-  - {fileID: 21300000, guid: c2a91fbec7b4246ecb86ab83d44e30e1, type: 3}
+  gameModeName: Cube
   additions:
   - {fileID: 5277978353412573475}
 --- !u!1 &5423140320374693505
@@ -307,16 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27bf261bd4f1048c997597577b13649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameModeName: BallIcon
-  icons:
-  - {fileID: 21300000, guid: 628778040dc704e8ca7e618f596144a6, type: 3}
-  - {fileID: 21300000, guid: 654085fa2ef7e4479bfe6b3ee5f9f72f, type: 3}
-  - {fileID: 21300000, guid: 1b44a7e79d91742e8bbb6ce403ca4c95, type: 3}
-  - {fileID: 21300000, guid: 31c6778bc168949138bf5cc88da7ded5, type: 3}
-  - {fileID: 21300000, guid: eab3d99b5964e460fbf4e3d7b9976e63, type: 3}
-  - {fileID: 21300000, guid: c8203b2dc89574e8e886934cc1dab94c, type: 3}
-  - {fileID: 21300000, guid: d970bc1ac0d474b8b93eb5847d9c486e, type: 3}
-  - {fileID: 21300000, guid: 19a8e2536be9043138ab9c6b9dc25f65, type: 3}
+  gameModeName: Ball
   additions: []
 --- !u!1 &6974515961540636714
 GameObject:

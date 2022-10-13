@@ -8,7 +8,7 @@ public class VolumeManager : MonoBehaviour
     {
         volumeSlider = GetComponent<Slider>();
 
-        volumeSlider.value = PlayerPrefs.GetFloat("Volume", 1);
+        volumeSlider.value = (float)GlobalData.Volume;
 
         AudioListener.volume = volumeSlider.value;
     }
@@ -16,6 +16,6 @@ public class VolumeManager : MonoBehaviour
     public void ChangeVolume()
     {
         AudioListener.volume = volumeSlider.value;
-        PlayerPrefs.SetFloat("Volume", volumeSlider.value);
+        GlobalData.Volume = volumeSlider.value;
     }
 }

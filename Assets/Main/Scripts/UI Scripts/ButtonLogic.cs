@@ -8,7 +8,6 @@ public class ButtonLogic : MonoBehaviour //НИКОГДА В ЖИЗНИ ТАК �
 
     public void ChangeScene(string sceneName)
     {
-        SelectLevel.level = PlayerPrefs.GetInt("Level", 0);
         SceneManager.LoadScene(sceneName);
     }
 
@@ -26,5 +25,10 @@ public class ButtonLogic : MonoBehaviour //НИКОГДА В ЖИЗНИ ТАК �
     public void Publish(InputField levelName)
     {
         GameObject.Find("Main Camera").GetComponent<ServerLogic>().SendLevel(levelName);
+    }
+
+    public void Save()
+    {
+        GlobalData.SaveLocal();
     }
 }

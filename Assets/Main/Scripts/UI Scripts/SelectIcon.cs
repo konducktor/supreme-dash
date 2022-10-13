@@ -3,12 +3,27 @@ using UnityEngine.UI;
 
 public class SelectIcon : MonoBehaviour
 {
-    public int ID;
-    public string gameModeName = "Icon";
+    public int id;
+    public string gameMode = "Cube";
+    public bool isUnlocked = false;
+
+    void Awake()
+    {
+        GetComponent<Button>().interactable = isUnlocked;
+    }
 
     public void ChangeIcon()
     {
-        PlayerPrefs.SetInt(gameModeName, ID);
-        GetComponentInParent<IconSeletManager>().player.sprite = GetComponent<Image>().sprite;
+        switch (gameMode)
+        {
+            case "Cube":
+                GlobalData.CurrentCube = id;
+                break;
+            case "Ball":
+                GlobalData.CurrentBall = id;
+                break;
+        }
+
+        GetComponentInParent<IconSelectManager>().player.sprite = GetComponent<Image>().sprite;
     }
 }

@@ -15,22 +15,24 @@ public class ColorSelector : MonoBehaviour
     }
     void Start()
     {
-        currentHex = PlayerPrefs.GetString("Color", "FFFFFF");
+        currentHex = GlobalData.CurrentColor;
         input.text = currentHex;
     }
 
 
 
-    [SerializeField] private SpriteRenderer icon;
-    [SerializeField] private SpriteRenderer jetpack;
+    [SerializeField] private SpriteRenderer[] previews;
     public void ChangeField()
     {
         currentHex = input.text;
 
-        icon.color = ColorFromString(currentHex);
-        jetpack.color = icon.color;
+        Color newColor = ColorFromString(currentHex);
+        foreach (SpriteRenderer icon in previews)
+        {
+            icon.color = newColor;
+        }
 
-        PlayerPrefs.SetString("Color", currentHex);
+        GlobalData.CurrentColor = currentHex;
     }
 
 
