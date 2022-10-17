@@ -7,7 +7,7 @@ public class SelectIcon : MonoBehaviour
     public string gameMode = "Cube";
     public bool isUnlocked = false;
 
-    void Awake()
+    void Start()
     {
         GetComponent<Button>().interactable = isUnlocked;
     }

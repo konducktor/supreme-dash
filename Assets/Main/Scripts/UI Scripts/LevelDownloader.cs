@@ -11,18 +11,20 @@ public class LevelDownloader : MonoBehaviour
     private string url;
     private string[] keys;
     private string[] values;
-    private string path;
 
     private string ID;
     private string levelName;
 
+    public void GetProfile(Text name)
+    {
+        GameObject.Find("Main Camera").GetComponent<ServerLogic>().GetProfile(name.text);
+    }
+
     public void Download()
     {
         Text[] info = GetComponentsInChildren<Text>();
-        ID = info[0].text;
-        levelName = info[1].text;
-
-        path = string.Concat(Application.persistentDataPath + "/", levelName + ".txt");
+        ID = info[1].text;
+        levelName = info[0].text;
 
         url = "https://beloeozero.ru/ppdsh/levels/" + ID + ".txt";
 

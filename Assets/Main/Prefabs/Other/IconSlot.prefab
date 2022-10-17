@@ -90,9 +90,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a98e91e07978b45048227bdecef8828f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  ID: 0
-  gameModeName: Icon
+  id: 0
+  gameMode: Cube
+  isUnlocked: 0
 --- !u!114 &355232293017315053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,7 +132,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 355232293017315042}
   m_OnClick:
     m_PersistentCalls:

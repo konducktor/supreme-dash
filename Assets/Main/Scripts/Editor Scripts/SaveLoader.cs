@@ -4,11 +4,14 @@ using UnityEngine;
 using System.IO;
 using System.Text;
 using Defective.JSON;
+using UnityEngine.SceneManagement;
 
 public class SaveLoader : MonoBehaviour
 {
 
     static string lastName;
+
+    public static int CurrentID;
 
     public static void SaveFile()
     {
@@ -160,7 +163,7 @@ public class SaveLoader : MonoBehaviour
             EditorLogic.objects[EditorLogic.objects.Count - 1].layer = layer + 100;
             currentObject.GetComponent<SpriteRenderer>().sortingOrder = layer + 100;
 
-            if (deco)
+            if (deco && SceneManager.GetActiveScene().name != "Editor")
             {
                 EditorLogic.objects[EditorLogic.objects.Count - 1].deco = deco;
 

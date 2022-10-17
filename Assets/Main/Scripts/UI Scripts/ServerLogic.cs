@@ -6,22 +6,19 @@ using UnityEngine.UI;
 using System.IO;
 using UnityEngine.Networking;
 
-public class SearchData
-{
-    public string[] names;
-    public string[] ids;
-    public string[] authors;
-
-    public SearchData(string[] names, string[] ids, string[] authors)
-    {
-        this.names = names;
-        this.ids = ids;
-        this.ids = authors;
-    }
-}
-
 public class ServerLogic : MonoBehaviour
 {
+    private class SearchData
+    {
+        public string[] names, ids, authors;
+    }
+
+    private class Profile
+    {
+        public string user, color;
+        public int icon, gems, rank;
+    }
+
     public static string rating = "1";
 
     public static string urlBase = "https://beloeozero.ru/ppdsh/";
@@ -96,6 +93,31 @@ public class ServerLogic : MonoBehaviour
         StartCoroutine(Send(url, keys, values));
     }
 
+    public void RefreshIcon()
+    {
+        url = "refreshicon.php";
+        keys = new string[] { "login", "password", "icon", "color" };
+        values = new string[] {
+            GlobalData.Login,
+            GlobalData.Password,
+            GlobalData.CurrentCube.ToString(),
+            GlobalData.CurrentColor
+        };
+
+        StartCoroutine(Send(url, keys, values));
+    }
+
+    public void GetProfile(string userName)
+    {
+        url = "getprofile.php";
+        keys = new string[] { "username" };
+        values = new string[] {
+            userName
+        };
+
+        StartCoroutine(Send(url, keys, values));
+    }
+
     public void NextPage()
     {
         searchPage += 5;
@@ -111,18 +133,25 @@ public class ServerLogic : MonoBehaviour
         }
     }
 
+    public void Search(string category, string searchText)
+    {
+        searchInput.text = searchText;
+        Search(category);
+    }
+
     public void Search(string category)
     {
-        if (searchInput.text != lastSearch)
+        string search = searchInput.text;
+        if (search != lastSearch)
         {
             searchPage = 0;
         }
 
         lastCategory = category;
-        lastSearch = searchInput.text;
+        lastSearch = search;
         url = "levelsearch.php";
 
-        if (searchInput.text == "")
+        if (search == "")
         {
             keys = new string[] { "category", "rating", "page" };
             values = new string[] { category, rating, Convert.ToString(searchPage) };
@@ -130,7 +159,7 @@ public class ServerLogic : MonoBehaviour
         else
         {
             keys = new string[] { "search", "category", "page", "rating" };
-            values = new string[] { searchInput.text, category, Convert.ToString(this.searchPage), rating };
+            values = new string[] { search, category, Convert.ToString(this.searchPage), rating };
         }
 
         StartCoroutine(Send(url, keys, values));
@@ -225,15 +254,20 @@ public class ServerLogic : MonoBehaviour
 
                     Text[] info = Instantiate(
                         searchElement,
-                        new Vector3(2f, -2.2f + (float)k * 1.6f, 0f),
-                        Quaternion.Euler(Vector3.zero),
                         searching
                     ).GetComponentsInChildren<Text>();
 
-                    info[0].text = searchData.ids[k];
-                    info[1].text = searchData.names[k];
-                    info[2].text = searchData.authors[k];
+                    info[1].text = searchData.ids[k];
+                    info[0].text = searchData.names[k];
+                    info[3].text = searchData.authors[k];
                 }
+                break;
+            case "getprofile.php":
+                Profile prof = JsonUtility.FromJson<Profile>(result);
+
+                GameObject obj = Instantiate(Resources.Load<GameObject>("Objects/UserProfile"), GameObject.Find("Canvas").transform);
+                obj.GetComponent<UserProfile>().SetProfile(prof.user, prof.icon, prof.color, prof.gems, prof.rank);
+
                 break;
         }
     }
