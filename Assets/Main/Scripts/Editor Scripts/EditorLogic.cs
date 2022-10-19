@@ -128,6 +128,7 @@ public class EditorLogic : MonoBehaviour
     public void Playtest()
     {
         GameLoader.ExitScene = "Editor";
+        GameLoader.currentID = 0;
         SceneManager.LoadScene("CustomLevel");
     }
 }

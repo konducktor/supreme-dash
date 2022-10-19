@@ -19,7 +19,7 @@ public class CamMove : MonoBehaviour
 
             if (Vector3.Distance(player.position, transform.position) < 30f)
             {
-                currentPos += (player.position - transform.position) * 8f * Time.deltaTime;
+                currentPos += (player.position - transform.position) * (8f / Time.deltaTime);
             }
             else
             {

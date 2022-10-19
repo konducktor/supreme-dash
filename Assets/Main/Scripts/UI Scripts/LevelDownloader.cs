@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -44,7 +45,7 @@ public class LevelDownloader : MonoBehaviour
         }
 
         EditorLogic.levelData = level.downloadHandler.text;
+        GameLoader.currentID = Convert.ToInt32(ID);
         SceneManager.LoadScene("CustomLevel");
-
     }
 }

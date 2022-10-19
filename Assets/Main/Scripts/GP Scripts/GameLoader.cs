@@ -16,6 +16,8 @@ public class GameLoader : MonoBehaviour
 
     public static string ExitScene = "Menu";
 
+    public static int currentID = 0;
+
     private void Awake()
     {
         Time.timeScale = 1f;

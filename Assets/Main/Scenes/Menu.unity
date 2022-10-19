@@ -2883,6 +2883,7 @@ GameObject:
   - component: {fileID: 692174365}
   - component: {fileID: 692174367}
   - component: {fileID: 692174366}
+  - component: {fileID: 692174368}
   m_Layer: 5
   m_Name: Supreme Dash
   m_TagString: Untagged
@@ -2952,6 +2953,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 692174364}
   m_CullTransparentMesh: 1
+--- !u!114 &692174368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692174364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27df50f0380d84500b36f913bdc98825, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 0.03
+  speed: 1
 --- !u!1 &712513800
 GameObject:
   m_ObjectHideFlags: 0
@@ -7300,6 +7315,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9010329099076438071, guid: e2012600f3f684b678c808e49fe05c82, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9010329099076438071, guid: e2012600f3f684b678c808e49fe05c82, type: 3}
       propertyPath: m_Colors.m_PressedColor.b
       value: 0
       objectReference: {fileID: 0}
@@ -8657,6 +8676,7 @@ GameObject:
   - component: {fileID: 2130628726}
   - component: {fileID: 2130628727}
   - component: {fileID: 2130628728}
+  - component: {fileID: 2130628729}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -8740,7 +8760,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1c46a4ffb83524911846f134217dc4b2, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -8859,6 +8879,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leaderboard: {fileID: 606866305}
   positionObject: {fileID: 1593262374005395251, guid: b917508d4b9eb4c259b8260401d49760, type: 3}
+--- !u!114 &2130628729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130628722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f22ad70049f634d55b221078176714da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &142299716073487124
 GameObject:
   m_ObjectHideFlags: 0

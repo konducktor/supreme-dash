@@ -11,8 +11,6 @@ public class SaveLoader : MonoBehaviour
 
     static string lastName;
 
-    public static int CurrentID;
-
     public static void SaveFile()
     {
         string levelString = LevelToJSON();

@@ -9,12 +9,12 @@ public static class GlobalData
     private class LocalData
     {
 
-        public int? currentCube, currentBall;
+        public int? currentCube, currentBall, unlokedLevel;
         public bool[] unlockedCubes, unlockedBalls;
         public string currentColor, login, password;
         public float? volume;
 
-        public LocalData(bool[] unlockedCubes, bool[] unlockedBalls, int? currentCube, int? currentBall, string color, float? volume, string login, string password)
+        public LocalData(bool[] unlockedCubes, bool[] unlockedBalls, int? currentCube, int? currentBall, int? unlokedLevel, string color, float? volume, string login, string password)
         {
             this.unlockedCubes = unlockedCubes;
             this.unlockedCubes = unlockedBalls;
@@ -27,12 +27,13 @@ public static class GlobalData
 
             this.login = login;
             this.password = password;
+            this.unlokedLevel = unlokedLevel;
         }
     }
 
 
     private static bool[] unlockedCubes, unlockedBalls;
-    private static int? currentCube, currentBall;
+    private static int? currentCube, currentBall, unlokedLevel;
     private static string currentColor, login, password;
     private static float? volume;
 
@@ -72,6 +73,15 @@ public static class GlobalData
             return currentBall;
         }
         set { currentBall = value; }
+    }
+    public static int? UnlokedLevel
+    {
+        get
+        {
+            if (unlokedLevel == null) LoadLocal();
+            return unlokedLevel;
+        }
+        set { unlokedLevel = value; }
     }
     public static string CurrentColor
     {
@@ -123,7 +133,7 @@ public static class GlobalData
 
         formatter.Serialize(stream, new LocalData(
             unlockedCubes, unlockedBalls,
-            currentCube, currentBall,
+            currentCube, currentBall, unlokedLevel,
             currentColor, volume,
             login, password
         ));
@@ -148,6 +158,7 @@ public static class GlobalData
 
                 currentCube = data.currentCube;
                 currentBall = data.currentBall;
+                unlokedLevel = data.unlokedLevel;
 
                 currentColor = data.currentColor;
                 volume = data.volume;
@@ -166,6 +177,7 @@ public static class GlobalData
 
         currentCube = 0;
         currentBall = 0;
+        unlokedLevel = 0;
 
         currentColor = "FFFFFF";
         volume = 1f;
