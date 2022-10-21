@@ -17,6 +17,8 @@ public class LevelComplete : MonoBehaviour
 
     void OnEnable()
     {
+        if (GameLoader.currentID == 0) return;
+
         string[] keys = new string[] { "login", "password", "id" };
         string[] values = new string[] { GlobalData.Login, GlobalData.Password, GameLoader.currentID.ToString() };
 
@@ -45,13 +47,8 @@ public class LevelComplete : MonoBehaviour
         }
 
         string result = www.downloadHandler.text;
-        Debug.Log(result);
 
-        if (result == "1")
-        {
-            rank.gameObject.SetActive(false);
-            gems.gameObject.SetActive(false);
-        }
+        if (result == "1") yield break;
 
         Result res = JsonUtility.FromJson<Result>(result);
 

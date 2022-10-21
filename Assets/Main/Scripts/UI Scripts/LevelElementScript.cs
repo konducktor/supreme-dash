@@ -15,6 +15,8 @@ public class LevelElementScript : MonoBehaviour
 
     public void SetName()
     {
+        if (nameText.text == currentName) return;
+
         File.Delete(Path.Combine(Application.persistentDataPath, nameText.text) + ".txt");
         File.Move(Path.Combine(Application.persistentDataPath, currentName) + ".txt",
             Path.Combine(Application.persistentDataPath, nameText.text) + ".txt");

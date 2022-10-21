@@ -617,69 +617,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UploadSmall
-      rect:
-        serializedVersion: 2
-        x: 738
-        y: 1602
-        width: 149
-        height: 149
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e04468fa8574a40538515402e21e83e0
-      internalID: -65220545
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BuildSmall
-      rect:
-        serializedVersion: 2
-        x: 887
-        y: 1602
-        width: 149
-        height: 149
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 92b5fc30f0995486780928d84a3b5be1
-      internalID: -1964049547
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PlaySmall
-      rect:
-        serializedVersion: 2
-        x: 1036
-        y: 1602
-        width: 149
-        height: 149
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f89f7e1921aad487393ed8dcb81bf90a
-      internalID: -2055663939
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: CopyPaste
       rect:
         serializedVersion: 2
@@ -709,7 +646,7 @@ TextureImporter:
         width: 289
         height: 289
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -717,6 +654,111 @@ TextureImporter:
       bones: []
       spriteID: c34159b92ac444e028097fc74374a790
       internalID: -27502736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: About
+      rect:
+        serializedVersion: 2
+        x: 1434
+        y: 1459
+        width: 293
+        height: 293
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 589a80c90f6504351b58aafaa2fb08a5
+      internalID: 1752069494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Profile
+      rect:
+        serializedVersion: 2
+        x: 1748
+        y: 1459
+        width: 293
+        height: 293
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78b83412023754cd5b6618bc8b8d1e50
+      internalID: -788783558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Online
+      rect:
+        serializedVersion: 2
+        x: 621
+        y: 615
+        width: 289
+        height: 289
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18998d099361d4451a4b24a1adfbd4de
+      internalID: -377300709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leaderboard
+      rect:
+        serializedVersion: 2
+        x: 933
+        y: 616
+        width: 287
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b16399eac5e349238c202673f0880b9
+      internalID: -1219656891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Play
+      rect:
+        serializedVersion: 2
+        x: 1256
+        y: 615
+        width: 289
+        height: 289
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04762450262004d999a23a0ed64746c5
+      internalID: 1989692458
       vertices: []
       indices: 
       edges: []
@@ -739,10 +781,14 @@ TextureImporter:
       Edit: 2612643696963342578
       Pause: 630403291
       Snap: -5644743045364067850
+      Play: 1989692458
       Arrow: -6885722887278889699
+      Online: -377300709
       Save: 2477628929557893019
       RotateLeft: -524074894043426323
+      About: 1752069494
       Button3: -7514736250736326063
+      Profile: -788783558
       Info_Circle: -4905698018198787690
       ExitEditor: 1613868908823004423
       Button1: -6973324265583258322
@@ -756,6 +802,7 @@ TextureImporter:
       CopyPaste: -1396466352
       Button2: 2921063373799211753
       Shop: -27502736
+      Leaderboard: -1219656891
       EditorObj: 79262543149503620
       RotateRight: 6203240909911375993
   spritePackingTag: 

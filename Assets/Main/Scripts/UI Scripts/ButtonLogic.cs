@@ -31,4 +31,15 @@ public class ButtonLogic : MonoBehaviour //НИКОГДА В ЖИЗНИ ТАК �
     {
         GlobalData.SaveLocal();
     }
+
+    public void GetPlayerProfile(GameObject register)
+    {
+        if (GlobalData.Login == string.Empty)
+        {
+            register.SetActive(true);
+            return;
+        }
+
+        GameObject.Find("Main Camera").GetComponent<ServerLogic>().GetProfile(GlobalData.Login);
+    }
 }
