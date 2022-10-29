@@ -42,4 +42,9 @@ public class ButtonLogic : MonoBehaviour //НИКОГДА В ЖИЗНИ ТАК �
 
         GameObject.Find("Main Camera").GetComponent<ServerLogic>().GetProfile(GlobalData.Login);
     }
+
+    public void ToggleStats(bool v)
+    {
+        GlobalData.AdvancedStats = v;
+    }
 }

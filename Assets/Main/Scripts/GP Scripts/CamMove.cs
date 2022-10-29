@@ -14,17 +14,17 @@ public class CamMove : MonoBehaviour
 
         if (player != null)
         {
-            Vector3 currentPos = transform.position;
+            Vector3 currentPos = player.position;
 
 
-            if (Vector3.Distance(player.position, transform.position) < 30f)
-            {
-                currentPos += (player.position - transform.position) * (8f / Time.deltaTime);
-            }
-            else
-            {
-                currentPos = player.position;
-            }
+            // if (Vector3.Distance(player.position, transform.position) < 30f)
+            // {
+            //     currentPos += (player.position - transform.position) * (8f / Time.deltaTime);
+            // }
+            // else
+            // {
+            //     currentPos = player.position;
+            // }
 
             currentPos.z = -10f;
             transform.position = currentPos;

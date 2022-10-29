@@ -13,8 +13,9 @@ public static class GlobalData
         public bool[] unlockedCubes, unlockedBalls;
         public string currentColor, login, password;
         public float? volume;
+        public bool? advancedStats;
 
-        public LocalData(bool[] unlockedCubes, bool[] unlockedBalls, int? currentCube, int? currentBall, int? unlokedLevel, string color, float? volume, string login, string password)
+        public LocalData(bool[] unlockedCubes, bool[] unlockedBalls, int? currentCube, int? currentBall, int? unlokedLevel, string color, float? volume, string login, string password, bool? advancedStats)
         {
             this.unlockedCubes = unlockedCubes;
             this.unlockedCubes = unlockedBalls;
@@ -28,6 +29,7 @@ public static class GlobalData
             this.login = login;
             this.password = password;
             this.unlokedLevel = unlokedLevel;
+            this.advancedStats = advancedStats;
         }
     }
 
@@ -36,6 +38,7 @@ public static class GlobalData
     private static int? currentCube, currentBall, unlokedLevel;
     private static string currentColor, login, password;
     private static float? volume;
+    private static bool? advancedStats;
 
     #region Properties
     public static bool[] UnlockedCubes
@@ -119,6 +122,15 @@ public static class GlobalData
         }
         set { volume = value; }
     }
+    public static bool AdvancedStats
+    {
+        get
+        {
+            if (advancedStats == null) LoadLocal();
+            return (bool)advancedStats;
+        }
+        set { advancedStats = value; }
+    }
     #endregion
 
     private static string path = Path.Combine(Application.persistentDataPath, "save");
@@ -135,7 +147,8 @@ public static class GlobalData
             unlockedCubes, unlockedBalls,
             currentCube, currentBall, unlokedLevel,
             currentColor, volume,
-            login, password
+            login, password,
+            advancedStats
         ));
 
         stream.Close();
@@ -166,6 +179,8 @@ public static class GlobalData
                 login = data.login;
                 password = data.password;
 
+                advancedStats = data.advancedStats;
+
                 return;
             }
 
@@ -181,5 +196,6 @@ public static class GlobalData
 
         currentColor = "FFFFFF";
         volume = 1f;
+        advancedStats = false;
     }
 }
