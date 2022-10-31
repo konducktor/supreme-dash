@@ -4,30 +4,23 @@ public class CamMove : MonoBehaviour
 {
     [SerializeField] private Transform player;
 
-    void Start()
+    [Range(0f, 1f)]
+    public float smoothTime;
+
+    [SerializeField] private Vector3 offset = new Vector3(0, 0, -10f);
+
+    private Vector3 velocity = Vector3.zero;
+
+    void Awake()
     {
         transform.position = player.position;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
-
         if (player != null)
         {
-            Vector3 currentPos = player.position;
-
-
-            // if (Vector3.Distance(player.position, transform.position) < 30f)
-            // {
-            //     currentPos += (player.position - transform.position) * (8f / Time.deltaTime);
-            // }
-            // else
-            // {
-            //     currentPos = player.position;
-            // }
-
-            currentPos.z = -10f;
-            transform.position = currentPos;
+            transform.position = Vector3.SmoothDamp(transform.position, player.position + offset, ref velocity, smoothTime);
         }
     }
 }

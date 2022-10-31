@@ -57,8 +57,6 @@ public class Leaderboard : MonoBehaviour
             Text[] componentsInChildren = Instantiate
             (
                 positionObject,
-                new Vector3(0f, 2.3f - (float)j / 1.5f, 0f),
-                Quaternion.Euler(Vector3.zero),
                 leaderboard
             ).GetComponentsInChildren<Text>();
 

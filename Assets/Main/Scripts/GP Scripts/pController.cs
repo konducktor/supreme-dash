@@ -13,6 +13,8 @@ public class pController : MonoBehaviour
     [SerializeField] private GameObject[] gameModes;
     [SerializeField] public float speed = 7f;
 
+    public Vector2 forces;
+
     private Rigidbody2D rb;
     private Vector3 startPos;
     private string gameMode;
@@ -31,7 +33,8 @@ public class pController : MonoBehaviour
 
     private void Update()
     {
-        rb.velocity = new Vector2(GameInput.HorizontalConstrolls() * speed, rb.velocity.y);
+        rb.velocity = new Vector2(GameInput.HorizontalConstrolls() * speed + forces.x * speed, rb.velocity.y + forces.y);
+
         if (GameInput.IsVerticalControlls())
         {
             switch (gameMode)
@@ -41,16 +44,22 @@ public class pController : MonoBehaviour
                     break;
 
                 case "ball":
-                    if (GameInput.ButtonDown()) rb.gravityScale *= -1f;
+                    if (GameInput.ButtonDown())
+                    {
+                        rb.gravityScale *= -1f;
+                    }
                     break;
             }
-
         }
 
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+
+
+        forces.y *= 0.9f;
+        forces.x *= 0.995f;
     }
 
     private void OnTriggerEnter2D(Collider2D collider)

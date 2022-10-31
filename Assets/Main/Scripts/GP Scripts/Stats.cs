@@ -22,11 +22,14 @@ public class Stats : MonoBehaviour
 
     void LateUpdate()
     {
-        fps.text = "fps: " + EditorCursor.Round(0.1f / Time.smoothDeltaTime, 1);
-        sx.text = "sx: " + EditorCursor.Round(rb.velocity.x, 3);
-        sy.text = "sy: " + EditorCursor.Round(rb.velocity.y, 3);
-        posx.text = "posx: " + EditorCursor.Round(tf.position.x, 3);
-        posy.text = "posy: " + EditorCursor.Round(tf.position.y, 3);
-        maxSpeed.text = "maxs: " + contr.speed;
+        if (rb && tf && contr)
+        {
+            fps.text = "fps: " + EditorCursor.Round(0.1f / Time.smoothDeltaTime, 1);
+            sx.text = "sx: " + EditorCursor.Round(rb.velocity.x, 3);
+            sy.text = "sy: " + EditorCursor.Round(rb.velocity.y, 3);
+            posx.text = "posx: " + EditorCursor.Round(tf.position.x, 3);
+            posy.text = "posy: " + EditorCursor.Round(tf.position.y, 3);
+            maxSpeed.text = "maxs: " + contr.speed;
+        }
     }
 }

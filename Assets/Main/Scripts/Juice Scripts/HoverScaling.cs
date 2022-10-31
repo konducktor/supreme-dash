@@ -4,14 +4,13 @@ using UnityEngine.EventSystems;
 
 public class HoverScaling : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [Range(1.1f, 2f)]
+    [Range(0.5f, 2f)]
     public float scaleValue = 1.1f;
 
-    [Range(0.1f, 0.9f)]
-    public float smoothness = 0.5f;
+    [Range(1f, 10f)]
+    public float smoothness = 10f;
 
-    private Vector3 originalScale;
-    private Vector3 currentScale;
+    private Vector3 originalScale, currentScale;
 
     void Start()
     {
