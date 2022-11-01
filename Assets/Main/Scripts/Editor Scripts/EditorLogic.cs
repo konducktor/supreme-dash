@@ -90,6 +90,9 @@ public class EditorLogic : MonoBehaviour
             currentObject.GetComponent<SpriteRenderer>().sortingOrder = LayerManager.currentLayer;
             currentObject.transform.localScale = EditorSelector.currentObjectScale;
 
+            var csr = currentObject.GetComponentsInChildren<SpriteRenderer>();
+            if (csr.Length > 1) csr[1].sortingOrder = LayerManager.currentLayer + 1;
+
             level.Add(currentObject);
             objects.Add(new SavedObject(
                 objectID,

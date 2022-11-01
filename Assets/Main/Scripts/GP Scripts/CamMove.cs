@@ -20,7 +20,14 @@ public class CamMove : MonoBehaviour
     {
         if (player != null)
         {
-            transform.position = Vector3.SmoothDamp(transform.position, player.position + offset, ref velocity, smoothTime);
+            if (Vector3.Distance(transform.position, player.position) < 30f)
+            {
+                transform.position = Vector3.SmoothDamp(transform.position, player.position + offset, ref velocity, smoothTime);
+                return;
+            }
+
+            transform.position = player.position + offset;
+
         }
     }
 }

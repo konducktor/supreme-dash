@@ -161,18 +161,25 @@ public class SaveLoader : MonoBehaviour
             EditorLogic.objects[EditorLogic.objects.Count - 1].layer = layer + 100;
             currentObject.GetComponent<SpriteRenderer>().sortingOrder = layer + 100;
 
-            if (deco && SceneManager.GetActiveScene().name != "Editor")
-            {
-                EditorLogic.objects[EditorLogic.objects.Count - 1].deco = deco;
+            var csr = currentObject.GetComponentsInChildren<SpriteRenderer>();
+            if (csr.Length > 1) csr[1].sortingOrder = layer + 101;
 
-                Destroy(currentObject.GetComponent<Rigidbody2D>());
-                Destroy(currentObject.GetComponent<Collider2D>());
-            }
 
-            if (currentObject.GetComponent<Rigidbody2D>() == null || EditorLogic.objects[EditorLogic.objects.Count - 1].deco == true)
+            if (SceneManager.GetActiveScene().name != "Editor")
             {
-                SetChunk(currentObject, chunk);
-                currentObject.SetActive(false);
+                if (deco)
+                {
+                    EditorLogic.objects[EditorLogic.objects.Count - 1].deco = deco;
+
+                    Destroy(currentObject.GetComponent<Rigidbody2D>());
+                    Destroy(currentObject.GetComponent<Collider2D>());
+                }
+
+                if (currentObject.GetComponent<Rigidbody2D>() == null || EditorLogic.objects[EditorLogic.objects.Count - 1].deco == true)
+                {
+                    SetChunk(currentObject, chunk);
+                    currentObject.SetActive(false);
+                }
             }
         }
 

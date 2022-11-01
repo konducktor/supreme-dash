@@ -29,19 +29,19 @@ public class Dash : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && (auto || GameInput.IsVerticalControlls()))
+        if (other.CompareTag("Player") && (auto || GameInput.IsVerticalControlls() && GameInput.ButtonDown()))
         {
-            Vector2 force = AngleToVector3(transform.eulerAngles.z) * Time.deltaTime * 30f;
+            Vector2 force = AngleToVector3(transform.eulerAngles.z) * 30f;
 
-            other.GetComponentInParent<pController>().forces += new Vector2(force.x, force.y);
+            other.attachedRigidbody.AddForce(force);
             return;
         }
 
         if (other.CompareTag("DynamicObject") && auto)
         {
-            Vector2 force = AngleToVector3(transform.eulerAngles.z) * Time.deltaTime * 20f;
+            Vector2 force = AngleToVector3(transform.eulerAngles.z) * 20f;
 
-            other.attachedRigidbody.AddForce(force);
+            other.attachedRigidbody.AddForce(force, ForceMode2D.Impulse);
         }
     }
 

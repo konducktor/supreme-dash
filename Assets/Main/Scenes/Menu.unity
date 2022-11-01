@@ -359,7 +359,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.6575455}
-  m_AnchoredPosition: {x: 0, y: 17.44}
+  m_AnchoredPosition: {x: 0, y: 17.440002}
   m_SizeDelta: {x: 0, y: 34.88}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &106426128
@@ -5959,7 +5959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleValue: 1.1
-  smoothness: 10
+  smoothTime: 0.1
 --- !u!1 &1396512667
 GameObject:
   m_ObjectHideFlags: 0
@@ -6890,6 +6890,10 @@ PrefabInstance:
       value: 0.93725497
       objectReference: {fileID: 0}
     - target: {fileID: 2679421910338316204, guid: 5128ad363beab4eb2b4deb5e9fb1324e, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: a8e87a92da52b448bbb491012a8797e6, type: 3}
+    - target: {fileID: 2679421910338316204, guid: 5128ad363beab4eb2b4deb5e9fb1324e, type: 3}
       propertyPath: m_FontData.m_MaxSize
       value: 62
       objectReference: {fileID: 0}
@@ -7718,7 +7722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleValue: 1.1
-  smoothness: 10
+  smoothTime: 0.1
 --- !u!1 &1752658783
 GameObject:
   m_ObjectHideFlags: 0
@@ -8100,7 +8104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleValue: 1.1
-  smoothness: 10
+  smoothTime: 0.1
 --- !u!1001 &1890998788
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9208,7 +9212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleValue: 1.1
-  smoothness: 10
+  smoothTime: 0.1
 --- !u!1001 &2064317946
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11300,7 +11304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleValue: 1.1
-  smoothness: 10
+  smoothTime: 0.1
 --- !u!1 &8336921148907479849
 GameObject:
   m_ObjectHideFlags: 0

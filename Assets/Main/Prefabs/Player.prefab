@@ -55,7 +55,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &142299714393398341
 MonoBehaviour:
@@ -72,8 +72,8 @@ MonoBehaviour:
   gameModes:
   - {fileID: 7955668796357306296}
   - {fileID: 6974515961540636714}
-  speed: 7
-  forces: {x: 0, y: 0}
+  speed: 40
+  smoothing: 0.05
 --- !u!96 &8287859211247344115
 TrailRenderer:
   serializedVersion: 2

@@ -290,6 +290,9 @@ public class EditorSelector : MonoBehaviour
         {
             EditorLogic.level[i].GetComponent<SpriteRenderer>().sortingOrder = num + 100;
             EditorLogic.objects[i].layer = num + 100;
+
+            var csr = EditorLogic.level[i].GetComponentsInChildren<SpriteRenderer>();
+            if (csr.Length > 1) csr[1].sortingOrder = num + 101;
         }
     }
 
