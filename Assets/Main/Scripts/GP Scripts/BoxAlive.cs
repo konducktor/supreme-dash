@@ -12,9 +12,15 @@ public class BoxAlive : MonoBehaviour
     public void ResetPosition()
     {
         transform.position = savedPosition;
+        transform.eulerAngles = Vector3.zero;
 
         rb.MoveRotation(0f);
         rb.velocity = Vector3.zero;
+    }
+
+    public void Checkpoint()
+    {
+        savedPosition = transform.position;
     }
 
     private void Awake()
@@ -23,9 +29,9 @@ public class BoxAlive : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collider)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collider.tag == "Spike")
+        if (collision.collider.tag == "Spike")
         {
             player.ResetPosition();
         }

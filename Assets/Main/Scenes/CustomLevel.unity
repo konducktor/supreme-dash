@@ -1283,7 +1283,6 @@ GameObject:
   - component: {fileID: 1533325329}
   - component: {fileID: 1533325328}
   - component: {fileID: 1533325327}
-  - component: {fileID: 1533325330}
   - component: {fileID: 1533325331}
   m_Layer: 0
   m_Name: Main Camera
@@ -1420,18 +1419,6 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &1533325330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1533325323}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ecdb81b1d0bd4a709901e4c2c5aa04d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1533325331
 MonoBehaviour:
   m_ObjectHideFlags: 0

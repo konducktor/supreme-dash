@@ -31,7 +31,7 @@ public class Dash : MonoBehaviour
     {
         if (other.CompareTag("Player") && (auto || GameInput.IsVerticalControlls() && GameInput.ButtonDown()))
         {
-            Vector2 force = AngleToVector3(transform.eulerAngles.z) * 30f;
+            Vector2 force = AngleToVector3(transform.eulerAngles.z) * 10f;
 
             other.attachedRigidbody.AddForce(force);
             return;
@@ -39,7 +39,7 @@ public class Dash : MonoBehaviour
 
         if (other.CompareTag("DynamicObject") && auto)
         {
-            Vector2 force = AngleToVector3(transform.eulerAngles.z) * 20f;
+            Vector2 force = AngleToVector3(transform.eulerAngles.z) * 5f;
 
             other.attachedRigidbody.AddForce(force, ForceMode2D.Impulse);
         }

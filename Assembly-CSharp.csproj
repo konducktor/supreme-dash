@@ -37,6 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets/Other/Joystick Pack/Scripts/Joysticks/DynamicJoystick.cs" />
+     <Compile Include="Assets/Main/Scripts/GP Scripts/PhysicsLogic.cs" />
      <Compile Include="Assets/Main/Scripts/GP Scripts/CamMove.cs" />
      <Compile Include="Assets/Main/Scripts/UI Scripts/UserProfile.cs" />
      <Compile Include="Assets/Other/Joystick Pack/Scripts/Base/Joystick.cs" />
@@ -44,7 +45,6 @@
      <Compile Include="Assets/Main/Scripts/UI Scripts/IconSelectManager.cs" />
      <Compile Include="Assets/Main/Scripts/UI Scripts/LevelElementScript.cs" />
      <Compile Include="Assets/Main/Scripts/Juice Scripts/ScaleAnimation.cs" />
-     <Compile Include="Assets/Main/Scripts/Other Scripts/ChunkLoader.cs" />
      <Compile Include="Assets/Main/Scripts/GP Scripts/LevelComplete.cs" />
      <Compile Include="Assets/Other/Joystick Pack/Scripts/Joysticks/FixedJoystick.cs" />
      <Compile Include="Assets/Main/Scripts/Editor Scripts/SaveLoader.cs" />
@@ -55,6 +55,7 @@
      <Compile Include="Assets/Main/Scripts/Editor Scripts/SetObjID.cs" />
      <Compile Include="Assets/Main/Scripts/Other Scripts/CameraCollider.cs" />
      <Compile Include="Assets/Main/Scripts/Editor Scripts/EditorCursor.cs" />
+     <Compile Include="Assets/Main/Scripts/GP Scripts/BoxAlive.cs" />
      <Compile Include="Assets/Main/Scripts/GP Scripts/Dash.cs" />
      <Compile Include="Assets/Main/Scripts/UI Scripts/Leaderboard.cs" />
      <Compile Include="Assets/Main/Scripts/Editor Scripts/LayerManager.cs" />
@@ -86,11 +87,12 @@
      <Compile Include="Assets/Main/Scripts/UI Scripts/MainMenu.cs" />
      <Compile Include="Assets/Main/Scripts/GP Scripts/GameLoader.cs" />
      <Compile Include="Assets/Main/Scripts/GP Scripts/pController.cs" />
+     <Compile Include="Assets/Main/Scripts/Other Scripts/ChunkLogic.cs" />
      <Compile Include="Assets/Main/Scripts/Juice Scripts/RandomMenuLoop.cs" />
      <Compile Include="Assets/Main/Scripts/Other Scripts/GlobalData.cs" />
+     <Compile Include="Assets/Main/Scripts/UI Scripts/PageScroller.cs" />
      <Compile Include="Assets/Main/Scripts/GP Scripts/Portal.cs" />
      <Compile Include="Assets/Main/Scripts/Juice Scripts/ParalaxBG.cs" />
-     <Compile Include="Assets/Main/Scripts/GP Scripts/BoxAlive.cs" />
      <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader" />

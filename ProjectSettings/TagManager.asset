@@ -10,6 +10,7 @@ TagManager:
   - Checkpoint
   - BallPortal
   - Chunk
+  - ChunkLoader
   layers:
   - Default
   - TransparentFX

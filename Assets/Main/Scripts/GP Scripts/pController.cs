@@ -7,8 +7,16 @@ public class pController : MonoBehaviour
 {
     class CheckpointSave
     {
-        public string mode = "cube";
-        public float speed = 7f;
+        public string mode;
+        public float speed;
+        public Vector3 position;
+
+        public CheckpointSave(Vector3 pos)
+        {
+            mode = "cube";
+            speed = 30f;
+            position = pos;
+        }
     }
 
     [SerializeField] private GameObject[] gameModes;
@@ -17,7 +25,6 @@ public class pController : MonoBehaviour
     private Vector3 velocity = Vector3.zero;
 
     private Rigidbody2D rb;
-    private Vector3 startPos;
     private TrailRenderer tr;
 
     private string gameMode;
@@ -30,12 +37,11 @@ public class pController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        startPos = transform.position;
         tr = GetComponent<TrailRenderer>();
 
         rb.gravityScale = 1f;
 
-        checkpointSave = new CheckpointSave();
+        checkpointSave = new CheckpointSave(transform.position);
         SetGamemode("cube");
     }
 
@@ -93,15 +99,17 @@ public class pController : MonoBehaviour
                 Destroy(gameObject);
                 break;
 
-            case "Spike":
-                ResetPosition();
-                break;
-
             case "Checkpoint":
                 checkpointSave.mode = gameMode;
                 checkpointSave.speed = speed;
 
-                startPos = collider.transform.position;
+                checkpointSave.position = collider.transform.position;
+
+                foreach (var box in aliveBoxes)
+                {
+                    box.Checkpoint();
+                }
+
                 break;
 
             case "BallPortal":
@@ -152,8 +160,8 @@ public class pController : MonoBehaviour
 
     public void ResetPosition()
     {
-        transform.position = startPos;
-
+        transform.position = checkpointSave.position;
+        transform.eulerAngles = Vector3.zero;
         speed = checkpointSave.speed;
         gameMode = checkpointSave.mode;
 
