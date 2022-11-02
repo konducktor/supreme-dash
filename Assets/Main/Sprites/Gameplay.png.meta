@@ -526,7 +526,7 @@ TextureImporter:
         width: 500
         height: 99
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -547,7 +547,7 @@ TextureImporter:
         width: 500
         height: 99
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -555,6 +555,69 @@ TextureImporter:
       bones: []
       spriteID: 30873f027846b4fa6b00217de2d2ebd0
       internalID: 2114550320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BoxAlive
+      rect:
+        serializedVersion: 2
+        x: 711
+        y: 495
+        width: 101
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 086c0f4ebba034dbfabbd745845d9321
+      internalID: -95206952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coin
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 452
+        width: 146
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38810b0e6695e4738b54850f8c54bc48
+      internalID: 1308494265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Side Platform
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 479
+        width: 500
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63ce9a44b1afc4116a43a5f1a369560d
+      internalID: -1136741343
       vertices: []
       indices: 
       edges: []
@@ -575,8 +638,11 @@ TextureImporter:
       Spike: -2516179862187422133
       Pixel: 1609658073
       TeleportB: -5772736279704159817
+      BoxAlive: -95206952
       Auto Dash: 1132949450
       Circle: 366759787362086406
+      Coin: 1308494265
+      Side Platform: -1136741343
       TeleportA: 153884431677385033
       Box: -1509151672871623176
       Speed 1: 1021086536255166552

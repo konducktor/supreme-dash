@@ -2016,6 +2016,10 @@ MonoBehaviour:
   - {fileID: 3195231968912501326, guid: fe936cf8b45c7489aafdf43dedc482e3, type: 3}
   - {fileID: 3195231968912501326, guid: 841222c95cdd74a1ab969d9ae0f560ca, type: 3}
   - {fileID: 1237573907017682964, guid: 5679334877732482f85bdf7d2664657b, type: 3}
+  - {fileID: 1237573907017682964, guid: 61b17c11bfb694b9da1933b6f2ca07f1, type: 3}
+  - {fileID: 3195231968912501326, guid: 43a7a3e980e9245a99e3f950c9bfc32a, type: 3}
+  - {fileID: 254171780349514760, guid: 3b9845eaa471746e4bbcf941fe215bef, type: 3}
+  - {fileID: 1237573907017682964, guid: f97aa802796c74c5591c71aac77b03d6, type: 3}
   finishMenu: {fileID: 907293731963088423}
   pausePanel: {fileID: 1021580145763518772}
   pauseButton: {fileID: 165707264}

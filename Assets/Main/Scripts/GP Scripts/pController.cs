@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -23,6 +24,8 @@ public class pController : MonoBehaviour
 
     CheckpointSave checkpointSave;
     private static bool IsAbleToChange = true;
+
+    public List<BoxAlive> aliveBoxes = new List<BoxAlive>();
 
     private void Start()
     {
@@ -147,7 +150,7 @@ public class pController : MonoBehaviour
         }
     }
 
-    private void ResetPosition()
+    public void ResetPosition()
     {
         transform.position = startPos;
 
@@ -161,5 +164,10 @@ public class pController : MonoBehaviour
         rb.velocity = Vector3.zero;
 
         tr.Clear();
+
+        foreach (var box in aliveBoxes)
+        {
+            box.ResetPosition();
+        }
     }
 }

@@ -74,8 +74,11 @@ public class SaveLoader : MonoBehaviour
         return lvl.ToString();
     }
 
+    private static pController player;
     public static List<GameObject> JSONToLevel(string input, Camera cam, GameObject[] gameObjs, AudioSource audio, GameObject chunk)
     {
+        player = FindObjectOfType<pController>();
+
         JSONObject lvl = new JSONObject(input);
         JSONObject data = new JSONObject();
 
@@ -180,11 +183,18 @@ public class SaveLoader : MonoBehaviour
                     SetChunk(currentObject, chunk);
                     currentObject.SetActive(false);
                 }
+
+                if (currentObject.TryGetComponent(out BoxAlive box))
+                {
+                    SetupBoxAlive(box);
+                }
             }
         }
 
         return importedLevel;
     }
+
+
     static List<GameObject> chunks;
 
     static void SetChunk(GameObject obj, GameObject chunk)
@@ -216,5 +226,13 @@ public class SaveLoader : MonoBehaviour
         );
 
         obj.transform.SetParent(chunks[chunks.Count - 1].transform, true);
+    }
+
+
+    static void SetupBoxAlive(BoxAlive box)
+    {
+        player.aliveBoxes.Add(box);
+
+        box.player = player;
     }
 }
