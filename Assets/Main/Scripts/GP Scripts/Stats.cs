@@ -24,7 +24,7 @@ public class Stats : MonoBehaviour
     {
         if (rb && tf && contr)
         {
-            fps.text = "fps: " + EditorCursor.Round(0.1f / Time.smoothDeltaTime, 0);
+            fps.text = "fps: " + EditorCursor.Round(0.1f / Time.smoothDeltaTime * 10, 0);
             sx.text = "sx: " + EditorCursor.Round(rb.velocity.x, 3);
             sy.text = "sy: " + EditorCursor.Round(rb.velocity.y, 3);
             posx.text = "posx: " + EditorCursor.Round(tf.position.x, 3);

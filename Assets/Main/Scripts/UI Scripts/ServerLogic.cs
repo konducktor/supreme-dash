@@ -13,10 +13,10 @@ public class ServerLogic : MonoBehaviour
         public string[] names, ids, authors;
     }
 
-    private class Profile
+    public class Profile
     {
         public string user, color;
-        public int icon, gems, rank;
+        public int icon, gems, rank, doublers, triplers;
     }
 
     public static string rating = "1";
@@ -166,6 +166,22 @@ public class ServerLogic : MonoBehaviour
     }
 
 
+    private string lastProductID;
+    public void Shop(string productID)
+    {
+        url = "shop.php";
+        keys = new string[] { "login", "password", "productID" };
+        values = new string[] {
+            GlobalData.Login,
+            GlobalData.Password,
+            productID
+        };
+
+        lastProductID = productID;
+        StartCoroutine(Send(url, keys, values));
+    }
+
+
     IEnumerator Send(string url, string[] keys, string[] values)
     {
         List<IMultipartFormSection> form = new List<IMultipartFormSection>();
@@ -269,7 +285,30 @@ public class ServerLogic : MonoBehaviour
                 obj.GetComponent<UserProfile>().SetProfile(prof.user, prof.icon, prof.color, prof.gems, prof.rank);
 
                 break;
+            case "shop.php":
+                if (Int32.Parse(result) == 1)
+                {
+                    break;
+                }
+
+                if (lastProductID == "0" && Int32.Parse(result) == 0)
+                {
+                    GlobalData.Doublers += 200;
+                }
+
+                if (lastProductID == "1" && Int32.Parse(result) == 0)
+                {
+                    GlobalData.Triplers += 150;
+                }
+
+                if (lastProductID == "2" && Int32.Parse(result) < 0)
+                {
+                    GlobalData.UnlockedCubes[Int32.Parse(result) * -1] = true;
+                }
+
+                GlobalData.SaveLocal();
+                GameObject.Find("ShopStats").GetComponent<ShopStats>().RefreshStats();
+                break;
         }
     }
-
 }

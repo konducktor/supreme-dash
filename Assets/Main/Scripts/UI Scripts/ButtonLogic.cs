@@ -34,7 +34,7 @@ public class ButtonLogic : MonoBehaviour //НИКОГДА В ЖИЗНИ ТАК �
 
     public void GetPlayerProfile(GameObject register)
     {
-        if (GlobalData.Login == string.Empty)
+        if (GlobalData.Login == null)
         {
             register.SetActive(true);
             return;

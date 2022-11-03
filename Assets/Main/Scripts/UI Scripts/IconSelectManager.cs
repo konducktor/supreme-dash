@@ -29,7 +29,7 @@ public class IconSelectManager : MonoBehaviour
 
             icon.id = i;
             icon.gameMode = gameMode;
-            if (iconCategories[i] == 0) icon.isUnlocked = true;
+            if (iconCategories[i] == 0 || GlobalData.UnlockedCubes[i]) icon.isUnlocked = true;
 
             image.sprite = Resources.Load<Sprite>(gameMode + "/icon" + i.ToString());
             image.color = colors[iconCategories[i]];
