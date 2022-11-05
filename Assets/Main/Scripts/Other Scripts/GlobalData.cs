@@ -130,12 +130,12 @@ public static class GlobalData
         }
         set { password = value; }
     }
-    public static float? Volume
+    public static float Volume
     {
         get
         {
             if (volume == null) LoadLocal();
-            return volume;
+            return (float)volume;
         }
         set { volume = value; }
     }

@@ -10,7 +10,7 @@ public class ServerLogic : MonoBehaviour
 {
     private class SearchData
     {
-        public string[] names, ids, authors;
+        public string[] names, ids, authors, ratings;
     }
 
     public class Profile
@@ -268,10 +268,17 @@ public class ServerLogic : MonoBehaviour
                 for (int k = 0; k < searchData.names.Length; k++)
                 {
 
-                    Text[] info = Instantiate(
+                    GameObject level = Instantiate(
                         searchElement,
                         searching
-                    ).GetComponentsInChildren<Text>();
+                    );
+
+                    if (Int32.Parse(searchData.ratings[k]) == 1)
+                    {
+                        level.GetComponentInChildren<Image>().color = ColorSelector.ColorFromString("00FF24");
+                    }
+
+                    Text[] info = level.GetComponentsInChildren<Text>();
 
                     info[1].text = searchData.ids[k];
                     info[0].text = searchData.names[k];

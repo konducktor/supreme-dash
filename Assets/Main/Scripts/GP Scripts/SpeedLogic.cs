@@ -10,7 +10,8 @@ public class SpeedLogic : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            collider.GetComponentInParent<pController>().speed *= changeSpeed;
+            pController player = collider.GetComponentInParent<pController>();
+            player.speed = player.playerSpeed * changeSpeed;
         }
     }
 }

@@ -21,6 +21,7 @@ public class pController : MonoBehaviour
 
     [SerializeField] private GameObject[] gameModes;
     [SerializeField] public float speed = 30f;
+    public float playerSpeed = 30f;
     [SerializeField] private float smoothing = 0.05f;
     private Vector3 velocity = Vector3.zero;
 

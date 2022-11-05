@@ -331,9 +331,6 @@
     <Reference Include="Newtonsoft.Json">
         <HintPath>/Users/andrewpogorelov/Documents/Games/nsd/Library/PackageCache/com.unity.nuget.newtonsoft-json@3.0.2/Runtime/Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="NugetForUnity">
-        <HintPath>/Users/andrewpogorelov/Documents/Games/nsd/Assets/NuGet/Editor/NugetForUnity.dll</HintPath>
-    </Reference>
     <Reference Include="unityplastic">
         <HintPath>/Users/andrewpogorelov/Documents/Games/nsd/Library/PackageCache/com.unity.collab-proxy@1.17.1/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>
     </Reference>

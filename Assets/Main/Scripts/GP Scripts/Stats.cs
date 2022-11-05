@@ -9,6 +9,7 @@ public class Stats : MonoBehaviour
     private pController contr;
 
     [SerializeField] private Text fps, sx, sy, posx, posy, maxSpeed;
+    GameLoader loader;
 
     void Start()
     {
@@ -18,13 +19,15 @@ public class Stats : MonoBehaviour
         rb = player.GetComponent<Rigidbody2D>();
         tf = player.GetComponent<Transform>();
         contr = player.GetComponent<pController>();
+
+        loader = FindObjectOfType<GameLoader>();
     }
 
     void LateUpdate()
     {
-        if (rb && tf && contr)
+        if (rb && tf && contr && !(loader.pausePanel.activeSelf || loader.finishMenu.activeSelf))
         {
-            fps.text = "fps: " + EditorCursor.Round(0.1f / Time.smoothDeltaTime * 10, 0);
+            fps.text = "fps: " + EditorCursor.Round((0.1f / Time.smoothDeltaTime) / 10f, 0);
             sx.text = "sx: " + EditorCursor.Round(rb.velocity.x, 3);
             sy.text = "sy: " + EditorCursor.Round(rb.velocity.y, 3);
             posx.text = "posx: " + EditorCursor.Round(tf.position.x, 3);
