@@ -36,87 +36,59 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets/Other/Joystick Pack/Scripts/Joysticks/DynamicJoystick.cs" />
-     <Compile Include="Assets/Main/Scripts/GP Scripts/PhysicsLogic.cs" />
-     <Compile Include="Assets/Main/Scripts/GP Scripts/CamMove.cs" />
-     <Compile Include="Assets/Main/Scripts/Other Scripts/Sound.cs" />
-     <Compile Include="Assets/Main/Scripts/UI Scripts/UserProfile.cs" />
-     <Compile Include="Assets/Other/Joystick Pack/Scripts/Base/Joystick.cs" />
-     <Compile Include="Assets/Main/Scripts/UI Scripts/LevelManager.cs" />
-     <Compile Include="Assets/Main/Scripts/UI Scripts/IconSelectManager.cs" />
-     <Compile Include="Assets/Main/Scripts/UI Scripts/LevelElementScript.cs" />
-     <Compile Include="Assets/Main/Scripts/Juice Scripts/ScaleAnimation.cs" />
-     <Compile Include="Assets/Main/Scripts/GP Scripts/LevelComplete.cs" />
-     <Compile Include="Assets/Other/Joystick Pack/Scripts/Joysticks/FixedJoystick.cs" />
-     <Compile Include="Assets/Main/Scripts/Editor Scripts/SaveLoader.cs" />
-     <Compile Include="Assets/Other/Joystick Pack/Scripts/Joysticks/VariableJoystick.cs" />
-     <Compile Include="Assets/Main/Scripts/Other Scripts/GameInput.cs" />
-     <Compile Include="Assets/Main/Scripts/Editor Scripts/EditorLogic.cs" />
-     <Compile Include="Assets/Main/Scripts/UI Scripts/ColorSelector.cs" />
-     <Compile Include="Assets/Main/Scripts/Editor Scripts/SetObjID.cs" />
-     <Compile Include="Assets/Main/Scripts/Other Scripts/CameraCollider.cs" />
-     <Compile Include="Assets/Main/Scripts/Editor Scripts/EditorCursor.cs" />
-     <Compile Include="Assets/Main/Scripts/GP Scripts/BoxAlive.cs" />
-     <Compile Include="Assets/Main/Scripts/GP Scripts/Dash.cs" />
-     <Compile Include="Assets/Main/Scripts/UI Scripts/Leaderboard.cs" />
-     <Compile Include="Assets/Main/Scripts/Editor Scripts/LayerManager.cs" />
-     <Compile Include="Assets/Main/Scripts/GP Scripts/SpeedLogic.cs" />
-     <Compile Include="Assets/Main/Scripts/GP Scripts/SetIcon.cs" />
-     <Compile Include="Assets/Other/Joystick Pack/Examples/JoystickSetterExample.cs" />
-     <Compile Include="Assets/Main/Scripts/GP Scripts/Stats.cs" />
-     <Compile Include="Assets/Main/Scripts/Juice Scripts/RotationAnimation.cs" />
-     <Compile Include="Assets/Main/Scripts/Editor Scripts/ObjectLogic.cs" />
-     <Compile Include="Assets/Main/Scripts/UI Scripts/ButtonLogic.cs" />
-     <Compile Include="Assets/Main/Scripts/UI Scripts/SelectIcon.cs" />
-     <Compile Include="Assets/Main/Scripts/GP Scripts/BGLogic.cs" />
-     <Compile Include="Assets/Main/Scripts/UI Scripts/ShopStats.cs" />
-     <Compile Include="Assets/Other/JSON/JSONObject.cs" />
-     <Compile Include="Assets/Main/Scripts/GP Scripts/TimerScript.cs" />
-     <Compile Include="Assets/Other/JSON/VectorTemplates.cs" />
-     <Compile Include="Assets/Main/Scripts/GP Scripts/FinishLogic.cs" />
-     <Compile Include="Assets/Main/Scripts/Editor Scripts/EditorCam.cs" />
-     <Compile Include="Assets/Other/Joystick Pack/Scripts/Joysticks/FloatingJoystick.cs" />
-     <Compile Include="Assets/Main/Scripts/UI Scripts/LevelDownloader.cs" />
-     <Compile Include="Assets/Main/Scripts/GP Scripts/PortalLogic.cs" />
-     <Compile Include="Assets/Main/Scripts/Editor Scripts/EditorSelector.cs" />
-     <Compile Include="Assets/Main/Scripts/UI Scripts/RankBar.cs" />
-     <Compile Include="Assets/Main/Scripts/UI Scripts/ServerLogic.cs" />
-     <Compile Include="Assets/Main/Scripts/Other Scripts/AudioManager.cs" />
-     <Compile Include="Assets/Main/Scripts/Other Scripts/MobileOnly.cs" />
-     <Compile Include="Assets/Main/Scripts/Juice Scripts/HoverScaling.cs" />
-     <Compile Include="Assets/Main/Scripts/UI Scripts/VolumeManager.cs" />
-     <Compile Include="Assets/Main/Scripts/Editor Scripts/EditorSound.cs" />
-     <Compile Include="Assets/Other/Joystick Pack/Examples/JoystickPlayerExample.cs" />
-     <Compile Include="Assets/Main/Scripts/UI Scripts/MainMenu.cs" />
-     <Compile Include="Assets/Main/Scripts/GP Scripts/GameLoader.cs" />
-     <Compile Include="Assets/Main/Scripts/GP Scripts/pController.cs" />
-     <Compile Include="Assets/Main/Scripts/Other Scripts/ChunkLogic.cs" />
-     <Compile Include="Assets/Main/Scripts/Juice Scripts/RandomMenuLoop.cs" />
-     <Compile Include="Assets/Main/Scripts/Other Scripts/GlobalData.cs" />
-     <Compile Include="Assets/Main/Scripts/UI Scripts/PageScroller.cs" />
-     <Compile Include="Assets/Main/Scripts/GP Scripts/Portal.cs" />
-     <Compile Include="Assets/Main/Scripts/Juice Scripts/ParalaxBG.cs" />
-     <None Include="Assets/Other/TextMesh Pro/Shaders/TMPro.cginc" />
-     <None Include="Assets/Other/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" />
-     <None Include="Assets/Other/TextMesh Pro/Shaders/TMP_Bitmap.shader" />
-     <None Include="Assets/Other/TextMesh Pro/Shaders/TMPro_Mobile.cginc" />
-     <None Include="Assets/Other/TextMesh Pro/Shaders/TMP_SDF SSD.shader" />
-     <None Include="Assets/Other/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader" />
-     <None Include="Assets/Other/TextMesh Pro/Shaders/TMP_SDF-Surface.shader" />
-     <None Include="Assets/Other/TextMesh Pro/Sprites/EmojiOne Attribution.txt" />
-     <None Include="Assets/Other/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader" />
-     <None Include="Assets/Other/TextMesh Pro/Shaders/TMP_SDF.shader" />
-     <None Include="Assets/Other/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader" />
-     <None Include="Assets/Other/TextMesh Pro/Resources/LineBreaking Leading Characters.txt" />
-     <None Include="Assets/Other/TextMesh Pro/Shaders/TMPro_Properties.cginc" />
-     <None Include="Assets/Other/TextMesh Pro/Shaders/TMPro_Surface.cginc" />
-     <None Include="Assets/Other/TextMesh Pro/Resources/LineBreaking Following Characters.txt" />
-     <None Include="Assets/Other/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader" />
-     <None Include="Assets/Other/TextMesh Pro/Shaders/TMP_SDF Overlay.shader" />
-     <None Include="Assets/Other/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader" />
-     <None Include="Assets/Other/TextMesh Pro/Fonts/LiberationSans - OFL.txt" />
-     <None Include="Assets/Other/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader" />
-     <None Include="Assets/Other/TextMesh Pro/Shaders/TMP_Sprite.shader" />
+     <Compile Include="Assets/Scripts/GP Scripts/PhysicsLogic.cs" />
+     <Compile Include="Assets/Scripts/GP Scripts/CamMove.cs" />
+     <Compile Include="Assets/Scripts/Other Scripts/Sound.cs" />
+     <Compile Include="Assets/Scripts/UI Scripts/UserProfile.cs" />
+     <Compile Include="Assets/Scripts/UI Scripts/LevelManager.cs" />
+     <Compile Include="Assets/Scripts/UI Scripts/IconSelectManager.cs" />
+     <Compile Include="Assets/Scripts/UI Scripts/LevelElementScript.cs" />
+     <Compile Include="Assets/Scripts/Juice Scripts/ScaleAnimation.cs" />
+     <Compile Include="Assets/Scripts/GP Scripts/LevelComplete.cs" />
+     <Compile Include="Assets/Scripts/Editor Scripts/SaveLoader.cs" />
+     <Compile Include="Assets/Scripts/Other Scripts/GameInput.cs" />
+     <Compile Include="Assets/Scripts/Editor Scripts/EditorLogic.cs" />
+     <Compile Include="Assets/Scripts/UI Scripts/ColorSelector.cs" />
+     <Compile Include="Assets/Scripts/Editor Scripts/SetObjID.cs" />
+     <Compile Include="Assets/Scripts/Other Scripts/CameraCollider.cs" />
+     <Compile Include="Assets/Scripts/Editor Scripts/EditorCursor.cs" />
+     <Compile Include="Assets/Scripts/GP Scripts/BoxAlive.cs" />
+     <Compile Include="Assets/Scripts/GP Scripts/Dash.cs" />
+     <Compile Include="Assets/Scripts/UI Scripts/Leaderboard.cs" />
+     <Compile Include="Assets/Scripts/Editor Scripts/LayerManager.cs" />
+     <Compile Include="Assets/Scripts/GP Scripts/SpeedLogic.cs" />
+     <Compile Include="Assets/Scripts/GP Scripts/SetIcon.cs" />
+     <Compile Include="Assets/Scripts/GP Scripts/Stats.cs" />
+     <Compile Include="Assets/Scripts/Juice Scripts/RotationAnimation.cs" />
+     <Compile Include="Assets/Scripts/Editor Scripts/ObjectLogic.cs" />
+     <Compile Include="Assets/Scripts/Editor Scripts/HotKeys.cs" />
+     <Compile Include="Assets/Scripts/UI Scripts/ButtonLogic.cs" />
+     <Compile Include="Assets/Scripts/UI Scripts/SelectIcon.cs" />
+     <Compile Include="Assets/Scripts/GP Scripts/BGLogic.cs" />
+     <Compile Include="Assets/Scripts/UI Scripts/ShopStats.cs" />
+     <Compile Include="Assets/Scripts/GP Scripts/TimerScript.cs" />
+     <Compile Include="Assets/Scripts/GP Scripts/FinishLogic.cs" />
+     <Compile Include="Assets/Scripts/Editor Scripts/EditorCam.cs" />
+     <Compile Include="Assets/Scripts/UI Scripts/LevelDownloader.cs" />
+     <Compile Include="Assets/Scripts/GP Scripts/PortalLogic.cs" />
+     <Compile Include="Assets/Scripts/Editor Scripts/EditorSelector.cs" />
+     <Compile Include="Assets/Scripts/UI Scripts/RankBar.cs" />
+     <Compile Include="Assets/Scripts/UI Scripts/ServerLogic.cs" />
+     <Compile Include="Assets/Scripts/Other Scripts/AudioManager.cs" />
+     <Compile Include="Assets/Scripts/Other Scripts/MobileOnly.cs" />
+     <Compile Include="Assets/Scripts/Juice Scripts/HoverScaling.cs" />
+     <Compile Include="Assets/Scripts/UI Scripts/VolumeManager.cs" />
+     <Compile Include="Assets/Scripts/Editor Scripts/EditorSound.cs" />
+     <Compile Include="Assets/Scripts/UI Scripts/MainMenu.cs" />
+     <Compile Include="Assets/Scripts/GP Scripts/GameLoader.cs" />
+     <Compile Include="Assets/Scripts/GP Scripts/pController.cs" />
+     <Compile Include="Assets/Scripts/Other Scripts/ChunkLogic.cs" />
+     <Compile Include="Assets/Scripts/Juice Scripts/RandomMenuLoop.cs" />
+     <Compile Include="Assets/Scripts/Other Scripts/DiscordRichPresence.cs" />
+     <Compile Include="Assets/Scripts/Other Scripts/GlobalData.cs" />
+     <Compile Include="Assets/Scripts/UI Scripts/PageScroller.cs" />
+     <Compile Include="Assets/Scripts/GP Scripts/Portal.cs" />
+     <Compile Include="Assets/Scripts/Juice Scripts/ParalaxBG.cs" />
     <Reference Include="UnityEngine">
         <HintPath>/Applications/Unity/Hub/Editor/2021.3.8f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -854,6 +826,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{da80ff3b-fc81-cd69-83a4-7baf06afc7a9}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
