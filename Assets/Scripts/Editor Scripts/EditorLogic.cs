@@ -48,7 +48,7 @@ public class EditorLogic : MonoBehaviour
     [SerializeField] GameObject chunk;
 
 
-    void Start()
+    void Awake()
     {
 
         currentObject = new GameObject();

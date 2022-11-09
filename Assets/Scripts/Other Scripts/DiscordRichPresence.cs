@@ -41,7 +41,7 @@ public class DiscordRichPresence : MonoBehaviour
 
     void Start()
     {
-        discord = new Discord.Discord(applicationID, (System.UInt64)Discord.CreateFlags.Default);
+        discord = new Discord.Discord(applicationID, (System.UInt64)Discord.CreateFlags.NoRequireDiscord);
 
         time = System.DateTimeOffset.Now.ToUnixTimeMilliseconds();
 
