@@ -89,6 +89,7 @@
      <Compile Include="Assets/Scripts/UI Scripts/PageScroller.cs" />
      <Compile Include="Assets/Scripts/GP Scripts/Portal.cs" />
      <Compile Include="Assets/Scripts/Juice Scripts/ParalaxBG.cs" />
+     <Compile Include="Assets/Scripts/Juice Scripts/SceneTransition.cs" />
     <Reference Include="UnityEngine">
         <HintPath>/Applications/Unity/Hub/Editor/2021.3.8f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

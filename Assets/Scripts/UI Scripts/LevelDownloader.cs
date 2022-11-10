@@ -46,6 +46,6 @@ public class LevelDownloader : MonoBehaviour
 
         EditorLogic.levelData = level.downloadHandler.text;
         GameLoader.currentID = Convert.ToInt32(ID);
-        SceneManager.LoadScene("CustomLevel");
+        SceneTransition.ChangeScene("CustomLevel");
     }
 }

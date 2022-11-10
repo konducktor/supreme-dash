@@ -8,7 +8,7 @@ public class ButtonLogic : MonoBehaviour //НИКОГДА В ЖИЗНИ ТАК �
 
     public void ChangeScene(string sceneName)
     {
-        SceneManager.LoadScene(sceneName);
+        SceneTransition.ChangeScene(sceneName);
     }
 
 

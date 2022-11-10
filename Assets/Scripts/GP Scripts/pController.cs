@@ -57,7 +57,7 @@ public class pController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneTransition.ChangeScene(SceneManager.GetActiveScene().name);
         }
     }
 

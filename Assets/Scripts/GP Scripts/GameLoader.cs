@@ -57,12 +57,12 @@ public class GameLoader : MonoBehaviour
 
     public void Continue() => SetPaused(false);
 
-    public void Restart() => SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    public void Restart() => SceneTransition.ChangeScene(SceneManager.GetActiveScene().name);
 
     public void Exit()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(ExitScene);
+        SceneTransition.ChangeScene(ExitScene);
         ExitScene = "Menu";
     }
 }
