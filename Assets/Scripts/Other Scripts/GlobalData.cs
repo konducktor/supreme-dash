@@ -26,6 +26,8 @@ public static class GlobalData
             this.unlockedCubes = unlockedCubes;
 
             this.currentCube = currentCube;
+            this.currentBall = currentBall;
+
             this.doublers = doublers;
             this.triplers = triplers;
 

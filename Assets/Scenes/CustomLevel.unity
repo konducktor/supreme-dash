@@ -627,7 +627,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 106.19995, y: -106.399994}
+  m_AnchoredPosition: {x: 106.19995, y: -106.400024}
   m_SizeDelta: {x: 212.76, y: 212.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &712751321
@@ -688,7 +688,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4226077375846420798, guid: d5a993fdbe83b4656bc6aca261663444, type: 3}
       propertyPath: m_Name
-      value: Property
+      value: Gems
       objectReference: {fileID: 0}
     - target: {fileID: 4705098690354147590, guid: d5a993fdbe83b4656bc6aca261663444, type: 3}
       propertyPath: m_Pivot.x
@@ -756,7 +756,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4705098690354147590, guid: d5a993fdbe83b4656bc6aca261663444, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 323.73383
+      value: 367
       objectReference: {fileID: 0}
     - target: {fileID: 4705098690354147590, guid: d5a993fdbe83b4656bc6aca261663444, type: 3}
       propertyPath: m_AnchoredPosition.y

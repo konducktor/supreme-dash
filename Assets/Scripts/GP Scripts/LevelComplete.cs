@@ -8,7 +8,7 @@ public class LevelComplete : MonoBehaviour
 {
     private class Result
     {
-        public int gems;
+        public int gems, doublers, triplers;
         public int rank;
     }
 

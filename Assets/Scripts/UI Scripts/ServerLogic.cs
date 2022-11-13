@@ -26,19 +26,17 @@ public class ServerLogic : MonoBehaviour
     private string[] keys;
     private string[] values;
 
-    [SerializeField] private InputField login;
-    [SerializeField] private InputField password;
-    [SerializeField] private Text currentAccount;
-
-    [SerializeField] private Text publishResult;
-
-    [SerializeField] private InputField searchInput;
-    [SerializeField] private GameObject searchElement;
+    [SerializeField] private InputField login, password, searchInput;
+    [SerializeField] private Text currentAccount, publishResult;
+    [SerializeField] private GameObject searchElement, newIcon;
     [SerializeField] private Transform searching;
+    [SerializeField] private IconSelectManager iconSelector;
 
     private string lastCategory = "ID";
     private string lastSearch;
     private int searchPage;
+
+    private string result;
 
     void Start()
     {
@@ -69,6 +67,24 @@ public class ServerLogic : MonoBehaviour
         values = new string[] { login.text, password.text };
 
         StartCoroutine(Send(url, keys, values));
+
+        if (result == "2")
+        {
+            currentAccount.text = "Enter everyting, please";
+            return;
+        }
+
+        if (result == "1")
+        {
+            currentAccount.text = "This name is already taken";
+            return;
+        }
+
+        GlobalData.Login = values[0];
+        GlobalData.Password = values[1];
+        currentAccount.text = "Done! Current: " + values[0];
+
+        GlobalData.SaveLocal();
     }
 
     public void Login()
@@ -78,6 +94,24 @@ public class ServerLogic : MonoBehaviour
         values = new string[] { login.text, password.text };
 
         StartCoroutine(Send(url, keys, values));
+
+        if (result == "2")
+        {
+            currentAccount.text = "Enter everyting, please";
+            return;
+        }
+
+        if (result == "1")
+        {
+            currentAccount.text = "There is no such account";
+            return;
+        }
+
+        GlobalData.Login = values[0];
+        GlobalData.Password = values[1];
+        currentAccount.text = "Done! Current: " + values[0];
+
+        GlobalData.SaveLocal();
     }
 
     public void SendLevel(InputField name)
@@ -201,48 +235,10 @@ public class ServerLogic : MonoBehaviour
             yield break;
         }
 
-        string result = www.downloadHandler.text;
+        result = www.downloadHandler.text;
 
         switch (url)
         {
-            case "register.php":
-                if (result == "2")
-                {
-                    currentAccount.text = "Enter everyting, please";
-                    break;
-                }
-
-                if (result == "1")
-                {
-                    currentAccount.text = "This name is already taken";
-                    break;
-                }
-
-                GlobalData.Login = values[0];
-                GlobalData.Password = values[1];
-                currentAccount.text = "Done! Current: " + values[0];
-
-                GlobalData.SaveLocal();
-                break;
-            case "login.php":
-                if (result == "2")
-                {
-                    currentAccount.text = "Enter everyting, please";
-                    break;
-                }
-
-                if (result == "1")
-                {
-                    currentAccount.text = "There is no such account";
-                    break;
-                }
-
-                GlobalData.Login = values[0];
-                GlobalData.Password = values[1];
-                currentAccount.text = "Done! Current: " + values[0];
-
-                GlobalData.SaveLocal();
-                break;
             case "levelsend.php":
                 if (result == "3")
                 {
@@ -310,6 +306,11 @@ public class ServerLogic : MonoBehaviour
 
                 if (lastProductID == "2" && Int32.Parse(result) < 0)
                 {
+                    NewIcon animation = Instantiate(newIcon, GameObject.Find("Canvas").transform).GetComponent<NewIcon>();
+
+                    animation.iconID = Int32.Parse(result) * -1;
+                    animation.backgroundColor = iconSelector.colors[iconSelector.iconCategories[animation.iconID]];
+
                     GlobalData.UnlockedCubes[Int32.Parse(result) * -1] = true;
                 }
 

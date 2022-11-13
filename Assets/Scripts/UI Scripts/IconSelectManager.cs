@@ -5,11 +5,11 @@ public class IconSelectManager : MonoBehaviour
 {
     public SpriteRenderer player;
 
+    public int[] iconCategories;
+    public Color[] colors;
+
+
     [SerializeField] private GameObject slot;
-    [SerializeField] private int[] iconCategories;
-
-    [SerializeField] private Color[] colors;
-
     [SerializeField] private string gameMode;
 
     void OnEnable()

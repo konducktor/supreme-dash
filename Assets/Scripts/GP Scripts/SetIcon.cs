@@ -16,7 +16,18 @@ public class SetIcon : MonoBehaviour
 
     private void Start()
     {
-        sr.sprite = Resources.Load<Sprite>(gameModeName + "/icon" + GlobalData.CurrentCube.ToString());
+        string path = gameModeName + "/icon";
+        switch (gameModeName)
+        {
+            case "Cube":
+                path += GlobalData.CurrentCube.ToString();
+                break;
+            case "Ball":
+                path += GlobalData.CurrentBall.ToString();
+                break;
+        }
+
+        sr.sprite = Resources.Load<Sprite>(path);
         sr.color = ColorSelector.ColorFromString(GlobalData.CurrentColor);
 
         for (int i = 0; i < additions.Length; i++)
