@@ -27,11 +27,11 @@ public class Stats : MonoBehaviour
     {
         if (rb && tf && contr && !(loader.pausePanel.activeSelf || loader.finishMenu.activeSelf))
         {
-            fps.text = "fps: " + EditorCursor.Round((0.1f / Time.smoothDeltaTime) / 10f, 0);
-            sx.text = "sx: " + EditorCursor.Round(rb.velocity.x, 3);
-            sy.text = "sy: " + EditorCursor.Round(rb.velocity.y, 3);
-            posx.text = "posx: " + EditorCursor.Round(tf.position.x, 3);
-            posy.text = "posy: " + EditorCursor.Round(tf.position.y, 3);
+            fps.text = "fps: " + GlobalControl.Round((0.1f / Time.smoothDeltaTime) / 10f, 0);
+            sx.text = "sx: " + GlobalControl.Round(rb.velocity.x, 3);
+            sy.text = "sy: " + GlobalControl.Round(rb.velocity.y, 3);
+            posx.text = "posx: " + GlobalControl.Round(tf.position.x, 3);
+            posy.text = "posy: " + GlobalControl.Round(tf.position.y, 3);
             maxSpeed.text = "maxs: " + contr.speed;
         }
     }

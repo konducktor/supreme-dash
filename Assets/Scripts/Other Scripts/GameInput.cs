@@ -16,6 +16,7 @@ public class GameInput : MonoBehaviour
     private static Joystick joystick;
     private static float lastDist;
     private static int isSelecting;
+    private Camera editorCamera;
 
     private void Start()
     {
@@ -26,7 +27,25 @@ public class GameInput : MonoBehaviour
         {
             joystick = GameObject.Find("Main").GetComponent<GameLoader>().joystick;
         }
+
+        editorCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
     }
+
+
+    public static Vector3 mousePos;
+    public static Vector3 unsnapMousePos;
+    private void Update()
+    {
+        unsnapMousePos = editorCamera.ScreenToWorldPoint(Input.mousePosition);
+        mousePos = editorCamera.ScreenToWorldPoint(Input.mousePosition);
+
+        mousePos.x = GlobalControl.Round(mousePos.x, 4);
+        mousePos.y = GlobalControl.Round(mousePos.y, 4);
+
+        mousePos.z = 0;
+        unsnapMousePos.z = 0;
+    }
+
 
     //local
     private static Vector3 GlobalPosition(Vector2 pos)
@@ -36,10 +55,11 @@ public class GameInput : MonoBehaviour
 
         if (isSnap)
         {
-            output = EditorLogic.RoundVector(output, 0);
+            output = GlobalControl.RoundVector(output, 0);
         }
         return output;
     }
+
 
     //buttons
     public void SetSnap(bool value)
@@ -125,7 +145,7 @@ public class GameInput : MonoBehaviour
             return GlobalPosition(Input.GetTouch(id).position);
         }
 
-        return EditorCursor.mousePos;
+        return mousePos;
     }
 
     public static bool Delete()

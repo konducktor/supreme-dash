@@ -63,19 +63,11 @@ public class EditorLogic : MonoBehaviour
         EditorLogic.bgColor = cam.backgroundColor;
     }
 
-    public static Vector3 RoundVector(Vector3 vec, int amount)
-    {
-        vec.x = EditorCursor.Round(vec.x, amount);
-        vec.y = EditorCursor.Round(vec.y, amount);
-
-        return vec;
-    }
-
     private bool conditions;
     void Update()
     {
         conditions = objects.Exists(a =>
-            RoundVector(a.pos, 0) == RoundVector(GameInput.Pointer(), 0) &&
+            GlobalControl.RoundVector(a.pos, 0) == GlobalControl.RoundVector(GameInput.Pointer(), 0) &&
             a.rot == EditorCursor.currentRotation &&
             a.id == objectID &&
             a.layer == LayerManager.currentLayer
@@ -84,7 +76,7 @@ public class EditorLogic : MonoBehaviour
 
         if (GameInput.Build() && !conditions && objectID != 11)
         {
-            currentObject = Instantiate(gameObjects[objectID], GameInput.Pointer(), Quaternion.Euler(EditorCursor.objRotation));
+            currentObject = Instantiate(gameObjects[objectID], EditorCursor.currentPosition, Quaternion.Euler(EditorCursor.objRotation));
 
             currentObject.GetComponent<SpriteRenderer>().color = EditorSelector.currentObjectColor;
             currentObject.GetComponent<SpriteRenderer>().sortingOrder = LayerManager.currentLayer;
@@ -128,8 +120,9 @@ public class EditorLogic : MonoBehaviour
         bgColor = cam.backgroundColor;
     }
 
-    public void Playtest()
+    public static void Playtest()
     {
+        SaveLoader.SaveFile();
         GameLoader.ExitScene = "Editor";
         GameLoader.currentID = 0;
         SceneManager.LoadScene("CustomLevel");

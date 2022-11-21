@@ -395,12 +395,12 @@ TextureImporter:
       name: Platform
       rect:
         serializedVersion: 2
-        x: 2
-        y: 812
+        x: 1
+        y: 813
         width: 500
         height: 99
-      alignment: 9
-      pivot: {x: 0.5029723, y: 0.55629414}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -419,7 +419,7 @@ TextureImporter:
         x: 502
         y: 620
         width: 297
-        height: 296
+        height: 297
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -521,7 +521,7 @@ TextureImporter:
       name: Speed Platform
       rect:
         serializedVersion: 2
-        x: 2
+        x: 1
         y: 711
         width: 500
         height: 99

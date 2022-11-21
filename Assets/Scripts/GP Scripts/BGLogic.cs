@@ -28,8 +28,8 @@ public class BGLogic : MonoBehaviour
         }
         spriteSize = sr.size;
 
-        position.y = EditorCursor.Round(followCamera.transform.position.y / (sr.size.y / 3f), 0) * (sr.size.y / 3f) + offset;
-        position.x = EditorCursor.Round(followCamera.transform.position.x / (sr.size.y / 3f), 0) * (sr.size.y / 3f) + offset;
+        position.y = GlobalControl.Round(followCamera.transform.position.y / (sr.size.y / 3f), 0) * (sr.size.y / 3f) + offset;
+        position.x = GlobalControl.Round(followCamera.transform.position.x / (sr.size.y / 3f), 0) * (sr.size.y / 3f) + offset;
 
         transform.position = position;
     }

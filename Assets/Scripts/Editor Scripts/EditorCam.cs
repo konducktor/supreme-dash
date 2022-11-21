@@ -61,7 +61,7 @@ public class EditorCam : MonoBehaviour
     void Scroll()
     {
         float axis = GameInput.ScrollAxis();
-        if (axis != 0 && Camera.main.orthographicSize >= 3f && Camera.main.orthographicSize <= 100f)
+        if (axis != 0 && !Input.GetButton("Shift") && Camera.main.orthographicSize >= 3f && Camera.main.orthographicSize <= 100f)
         {
             Camera.main.orthographicSize -= axis * extraSpeed;
         }

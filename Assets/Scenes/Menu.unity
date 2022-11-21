@@ -3397,23 +3397,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2759655973178315037, guid: 34df470c31d4545dcb56969b33554c75, type: 3}
   m_PrefabInstance: {fileID: 633591834}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &633591836 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2759655972472130145, guid: 34df470c31d4545dcb56969b33554c75, type: 3}
-  m_PrefabInstance: {fileID: 633591834}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &633591837
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 633591836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48d854002bf0c47b1a00967892004600, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &634474506
 GameObject:
   m_ObjectHideFlags: 0
@@ -6085,23 +6068,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2759655973178315037, guid: 34df470c31d4545dcb56969b33554c75, type: 3}
   m_PrefabInstance: {fileID: 1253407468}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1253407470 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2759655972472130145, guid: 34df470c31d4545dcb56969b33554c75, type: 3}
-  m_PrefabInstance: {fileID: 1253407468}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1253407471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1253407470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48d854002bf0c47b1a00967892004600, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1256353891
 GameObject:
   m_ObjectHideFlags: 0
@@ -10260,7 +10226,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9010329099076438071, guid: e2012600f3f684b678c808e49fe05c82, type: 3}
       propertyPath: m_Interactable
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9010329099076438071, guid: e2012600f3f684b678c808e49fe05c82, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -10867,7 +10833,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9010329099076438071, guid: e2012600f3f684b678c808e49fe05c82, type: 3}
       propertyPath: m_Interactable
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9010329099076438071, guid: e2012600f3f684b678c808e49fe05c82, type: 3}
       propertyPath: m_TargetGraphic

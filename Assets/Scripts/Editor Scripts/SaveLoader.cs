@@ -13,6 +13,7 @@ public class SaveLoader : MonoBehaviour
 
     public static void SaveFile()
     {
+        LevelSaved.LevelSavedAnimation();
         string levelString = LevelToJSON();
 
         File.WriteAllText(Path.Combine(Application.persistentDataPath, lastName + ".txt"), levelString);
@@ -51,7 +52,7 @@ public class SaveLoader : MonoBehaviour
             if (EditorLogic.objects[i].id != 0)
                 obj.AddField("id", EditorLogic.objects[i].id);
             if (EditorLogic.objects[i].pos != Vector3.zero)
-                obj.AddField("pos", EditorLogic.RoundVector(EditorLogic.objects[i].pos, 5).FromVector3());
+                obj.AddField("pos", GlobalControl.RoundVector(EditorLogic.objects[i].pos, 5).FromVector3());
             if (EditorLogic.objects[i].rot != Vector3.zero)
                 obj.AddField("rot", EditorLogic.objects[i].rot.FromVector3());
             if (EditorLogic.objects[i].col != Color.white)

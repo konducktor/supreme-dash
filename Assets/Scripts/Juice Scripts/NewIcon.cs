@@ -14,10 +14,6 @@ public class NewIcon : MonoBehaviour
 
     void Start()
     {
-
-        // backgroundColor = icons.colors[icons.iconCategories[iconID]];
-        // backgroundColor.a = 1f;
-
         background.color = backgroundColor;
         icon.sprite = Resources.Load<Sprite>("Cube/icon" + iconID.ToString());
     }

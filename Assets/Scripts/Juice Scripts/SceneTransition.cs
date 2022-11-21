@@ -38,7 +38,7 @@ public class SceneTransition : MonoBehaviour
     {
         if (loadingSceneOperation != null)
         {
-            progressPersentage.text = EditorCursor.Round(loadingSceneOperation.progress * 100f, 0) + "%";
+            progressPersentage.text = GlobalControl.Round(loadingSceneOperation.progress * 100f, 0) + "%";
             progressBar.size = loadingSceneOperation.progress;
         }
     }

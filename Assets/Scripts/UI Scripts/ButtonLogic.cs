@@ -6,6 +6,14 @@ using UnityEngine.SceneManagement;
 public class ButtonLogic : MonoBehaviour //НИКОГДА В ЖИЗНИ ТАК НЕ ДЕЛАЙТЕ
 {
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F12))
+        {
+            Screen.fullScreen = !Screen.fullScreen;
+        }
+    }
+
     public void ChangeScene(string sceneName)
     {
         SceneTransition.ChangeScene(sceneName);

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +13,7 @@ public class EditorSelector : MonoBehaviour
     private GameObject cursor;
     public static bool isEditing = false;
 
-    private Vector3 start, end;
+    private Vector3 start;
     public static Vector3 topLeft, downRight;
     private LineRenderer selectLine;
 
@@ -48,6 +49,11 @@ public class EditorSelector : MonoBehaviour
 
         SelectObjects();
 
+        if (!GameInput.Touch() && !GameInput.TouchUp())
+        {
+            start = GameInput.unsnapMousePos;
+        }
+
         lastSelected.AddRange(newSelected);
         newSelected.Clear();
     }
@@ -73,7 +79,7 @@ public class EditorSelector : MonoBehaviour
         {
             if (GameInput.TouchUp()) // && !GameInput.IsOverUI()
             {
-                end = GameInput.Pointer(0);
+                Vector3 end = GameInput.Pointer(0);
 
                 topLeft = new Vector3(start.x, start.y, 0);
                 downRight = new Vector3(end.x, end.y, 0);
@@ -89,32 +95,31 @@ public class EditorSelector : MonoBehaviour
                     downRight.y = start.y;
                 }
 
-                StartCoroutine(Reset());
+                if (!GameInput.Shift() && lastSelected.Count > 0 && !GameInput.IsOverUI())
+                {
+                    lastSelected.Clear();
+                }
+
+                newSelected.AddRange(FindSelected(topLeft, downRight));
+                selectLine.positionCount = 0;
+
                 return;
             }
         }
     }
 
-    IEnumerator Reset()
+
+    private IEnumerable<int> FindSelected(Vector3 topLeft, Vector3 downRight)
     {
-        yield return null;
+        var indexes = EditorLogic.objects.Where(block =>
+            topLeft.x <= block.pos.x && topLeft.y >= block.pos.y &&
+            downRight.x >= block.pos.x && downRight.y <= block.pos.y &&
 
-        selectLine.positionCount = 0;
+            block.layer == LayerManager.currentLayer
+        ).Select(block => EditorLogic.objects.IndexOf(block));
 
-        start = Vector3.zero;
-        end = Vector3.zero;
-
-        topLeft = Vector3.zero;
-        downRight = Vector3.zero;
-
-        if (!GameInput.Shift() && lastSelected.Count > 0 && !GameInput.IsOverUI())
-        {
-            lastSelected.Clear();
-        }
-
-        yield break;
+        return indexes;
     }
-
 
     public void CopyPaste()
     {
