@@ -34,7 +34,6 @@ public class SaveLoader : MonoBehaviour
             inputLevel = File.ReadAllText(path);
         }
 
-
         return inputLevel;
     }
 
@@ -83,6 +82,8 @@ public class SaveLoader : MonoBehaviour
         JSONObject lvl = new JSONObject(input);
         JSONObject data = new JSONObject();
 
+        EditorSound.songID = 0;
+
         for (int i = 0; i < lvl.list.Count; i++)
         {
             string key = lvl.keys[i];
@@ -114,6 +115,8 @@ public class SaveLoader : MonoBehaviour
         GameObject currentObject;
 
         chunks = new List<GameObject>();
+
+        if (data.list == null) return importedLevel;
 
         for (int a = 0; a < data.list.Count; a++)
         {

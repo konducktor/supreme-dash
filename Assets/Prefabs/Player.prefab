@@ -53,7 +53,7 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
@@ -73,7 +73,9 @@ MonoBehaviour:
   - {fileID: 7955668796357306296}
   - {fileID: 6974515961540636714}
   speed: 40
+  playerSpeed: 30
   smoothing: 0.05
+  aliveBoxes: []
 --- !u!96 &8287859211247344115
 TrailRenderer:
   serializedVersion: 2

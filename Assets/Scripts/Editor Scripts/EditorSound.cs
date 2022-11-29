@@ -25,14 +25,9 @@ public class EditorSound : MonoBehaviour
         "Mental Disorder"
     };
 
-    void Awake()
-    {
-        songID = 0;
-        source = GetComponent<AudioSource>();
-    }
-
     void Start()
     {
+        source = GetComponent<AudioSource>();
         text.text = songs[songID];
     }
 

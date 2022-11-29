@@ -73,7 +73,6 @@ public class EditorLogic : MonoBehaviour
             a.layer == LayerManager.currentLayer
         );
 
-
         if (GameInput.Build() && !conditions && objectID != 11)
         {
             currentObject = Instantiate(gameObjects[objectID], EditorCursor.currentPosition, Quaternion.Euler(EditorCursor.objRotation));

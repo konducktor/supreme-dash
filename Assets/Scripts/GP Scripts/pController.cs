@@ -63,7 +63,7 @@ public class pController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move(GameInput.HorizontalConstrolls() * speed * Time.fixedDeltaTime, isJumpung, isButtonDown);
+        Move(GameInput.HorizontalConstrolls() * speed * Time.fixedDeltaTime * 10f, isJumpung, isButtonDown);
         isJumpung = false;
         isButtonDown = false;
     }
@@ -75,7 +75,7 @@ public class pController : MonoBehaviour
             switch (gameMode)
             {
                 case "cube":
-                    rb.AddForce(Vector2.up * 1400f * Time.fixedDeltaTime);
+                    rb.AddForce(Vector2.up * 40f);
                     break;
 
                 case "ball":
@@ -87,7 +87,9 @@ public class pController : MonoBehaviour
             }
         }
 
-        Vector3 targetVelocity = new Vector2(move * 10f, rb.velocity.y);
+        float deltaX = move - rb.velocity.x;
+        Vector3 targetVelocity = (Vector2.right * deltaX) + new Vector2(rb.velocity.x, rb.velocity.y);
+
         rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, smoothing);
     }
 

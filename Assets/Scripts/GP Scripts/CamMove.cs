@@ -11,7 +11,7 @@ public class CamMove : MonoBehaviour
 
     private Vector3 velocity = Vector3.zero;
 
-    void Awake()
+    void Start()
     {
         transform.position = player.position;
     }

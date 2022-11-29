@@ -7,8 +7,7 @@ using UnityEngine.UI;
 
 public class EditorSelector : MonoBehaviour
 {
-    public static List<int> newSelected = new List<int>();
-    public static List<int> lastSelected = new List<int>();
+    public static List<int> selected = new List<int>();
 
     private GameObject cursor;
     public static bool isEditing = false;
@@ -30,13 +29,17 @@ public class EditorSelector : MonoBehaviour
     public void StartEdit()
     {
         isEditing = true;
+        start = GameInput.Pointer(0);
+
+        SetObjOpacity(EditorLogic.level, 0.2f);
+        SetObjOpacity(EditorLogic.level, selected);
     }
 
     public void EndEdit()
     {
         LayerManager.SetOpacity();
 
-        lastSelected.Clear();
+        selected.Clear();
         isEditing = false;
     }
 
@@ -44,67 +47,69 @@ public class EditorSelector : MonoBehaviour
     {
         if (!isEditing) return;
 
-        SetObjOpacity(EditorLogic.level, 0.2f);
-        SetObjOpacity(EditorLogic.level, lastSelected);
-
-        SelectObjects();
-
         if (!GameInput.Touch() && !GameInput.TouchUp())
         {
             start = GameInput.unsnapMousePos;
-        }
-
-        lastSelected.AddRange(newSelected);
-        newSelected.Clear();
-    }
-
-    void SelectObjects()
-    {
-        if (GameInput.TouchDown() && !GameInput.IsOverUI())
-        {
-            start = GameInput.Pointer(0);
 
             return;
         }
 
-        if (GameInput.Touch() && start != Vector3.zero)
+        SelectObjects();
+    }
+
+    void SelectObjects()
+    {
+        Vector3 mousePos = GameInput.Pointer(0);
+
+        if (GameInput.TouchDown() && !GameInput.IsOverUI())
+        {
+            start = mousePos;
+
+            return;
+        }
+
+        if (GameInput.Touch() && start != mousePos)
         {
             selectLine.positionCount = 4;
-            selectLine.SetPosition(0, new Vector2(GameInput.Pointer(0).x, GameInput.Pointer(0).y));
-            selectLine.SetPosition(1, new Vector2(start.x, GameInput.Pointer(0).y));
+            selectLine.SetPosition(0, new Vector2(mousePos.x, mousePos.y));
+            selectLine.SetPosition(1, new Vector2(start.x, mousePos.y));
             selectLine.SetPosition(2, new Vector2(start.x, start.y));
-            selectLine.SetPosition(3, new Vector2(GameInput.Pointer(0).x, start.y));
+            selectLine.SetPosition(3, new Vector2(mousePos.x, start.y));
+
+            return;
         }
-        else
+
+        if (GameInput.TouchUp() && start != mousePos) // && !GameInput.IsOverUI()
         {
-            if (GameInput.TouchUp()) // && !GameInput.IsOverUI()
+            Debug.Log(start);
+            Debug.Log(mousePos);
+
+            Vector3 end = mousePos;
+
+            topLeft = new Vector3(start.x, start.y, 0);
+            downRight = new Vector3(end.x, end.y, 0);
+
+            if (start.x > end.x)
             {
-                Vector3 end = GameInput.Pointer(0);
-
-                topLeft = new Vector3(start.x, start.y, 0);
-                downRight = new Vector3(end.x, end.y, 0);
-
-                if (start.x > end.x)
-                {
-                    topLeft.x = end.x;
-                    downRight.x = start.x;
-                }
-                if (start.y < end.y)
-                {
-                    topLeft.y = end.y;
-                    downRight.y = start.y;
-                }
-
-                if (!GameInput.Shift() && lastSelected.Count > 0 && !GameInput.IsOverUI())
-                {
-                    lastSelected.Clear();
-                }
-
-                newSelected.AddRange(FindSelected(topLeft, downRight));
-                selectLine.positionCount = 0;
-
-                return;
+                topLeft.x = end.x;
+                downRight.x = start.x;
             }
+            if (start.y < end.y)
+            {
+                topLeft.y = end.y;
+                downRight.y = start.y;
+            }
+
+            if (!GameInput.Shift() && selected.Count > 0 && !GameInput.IsOverUI())
+            {
+                selected.Clear();
+            }
+
+            selected.AddRange(FindSelected(topLeft, downRight));
+            selectLine.positionCount = 0;
+
+            SetObjOpacity(EditorLogic.level, 0.2f);
+            SetObjOpacity(EditorLogic.level, selected);
         }
     }
 
@@ -123,7 +128,7 @@ public class EditorSelector : MonoBehaviour
 
     public void CopyPaste()
     {
-        foreach (int i in lastSelected)
+        foreach (int i in selected)
         {
             EditorLogic.SavedObject saveObject = EditorLogic.objects[i];
 
@@ -139,14 +144,14 @@ public class EditorSelector : MonoBehaviour
 
     public void Delete()
     {
-        for (int i = lastSelected.Count - 1; i >= 0; i--)
+        for (int i = selected.Count - 1; i >= 0; i--)
         {
-            Destroy(EditorLogic.level[lastSelected[i]]);
+            Destroy(EditorLogic.level[selected[i]]);
 
-            EditorLogic.level.RemoveAt(lastSelected[i]);
-            EditorLogic.objects.RemoveAt(lastSelected[i]);
+            EditorLogic.level.RemoveAt(selected[i]);
+            EditorLogic.objects.RemoveAt(selected[i]);
 
-            lastSelected.RemoveAt(i);
+            selected.RemoveAt(i);
         }
     }
 
@@ -154,7 +159,7 @@ public class EditorSelector : MonoBehaviour
     public static Color currentObjectColor;
     public void ObjectColor(InputField objectColor)
     {
-        foreach (int i in lastSelected)
+        foreach (int i in selected)
         {
             SpriteRenderer sr = EditorLogic.level[i].GetComponent<SpriteRenderer>();
 
@@ -181,7 +186,7 @@ public class EditorSelector : MonoBehaviour
     public void ObjectAlpha(InputField objectAlpha)
     {
         float a = (float)Convert.ToDecimal(objectAlpha.text) / 100f;
-        foreach (int index in lastSelected)
+        foreach (int index in selected)
         {
             Color color = EditorLogic.level[index].GetComponent<SpriteRenderer>().color;
             color.a = a;
@@ -200,7 +205,7 @@ public class EditorSelector : MonoBehaviour
                 (float)Convert.ToDecimal(individualScale.text), 1f
         );
 
-        foreach (int i in lastSelected)
+        foreach (int i in selected)
         {
             EditorLogic.level[i].transform.localScale = currentObjectScale;
             EditorLogic.objects[i].scale = currentObjectScale;
@@ -214,7 +219,7 @@ public class EditorSelector : MonoBehaviour
         Vector3 center = GetCenter();
         float d = (float)Convert.ToDecimal(objectScale.text);
 
-        foreach (int b in lastSelected)
+        foreach (int b in selected)
         {
             Transform transform = EditorLogic.level[b].transform;
 
@@ -233,7 +238,7 @@ public class EditorSelector : MonoBehaviour
     public void ObjectPositionX(InputField positionX)
     {
         float num = (float)Convert.ToDecimal(positionX.text);
-        foreach (int index in EditorSelector.lastSelected)
+        foreach (int index in EditorSelector.selected)
         {
             Vector3 position = EditorLogic.level[index].transform.position;
             position.x += num;
@@ -247,7 +252,7 @@ public class EditorSelector : MonoBehaviour
     public void ObjectPositionY(InputField positionY)
     {
         float num = (float)Convert.ToDecimal(positionY.text);
-        foreach (int index in EditorSelector.lastSelected)
+        foreach (int index in EditorSelector.selected)
         {
             Vector3 position = EditorLogic.level[index].transform.position;
             position.y += num;
@@ -263,7 +268,7 @@ public class EditorSelector : MonoBehaviour
         Vector3 center = GetCenter();
         float num = (float)Convert.ToDecimal(rotation.text);
 
-        foreach (int index in lastSelected)
+        foreach (int index in selected)
         {
             EditorLogic.level[index].transform.RotateAround(center, Vector3.back, num);
 
@@ -279,7 +284,7 @@ public class EditorSelector : MonoBehaviour
     {
         float num = (float)Convert.ToDecimal(individualRotation.text);
 
-        foreach (int index in lastSelected)
+        foreach (int index in selected)
         {
             EditorLogic.level[index].transform.eulerAngles = new Vector3(0f, 0f, num);
             EditorLogic.objects[index].rot = new Vector3(0f, 0f, num);
@@ -291,7 +296,7 @@ public class EditorSelector : MonoBehaviour
     public void ObjectLayer(InputField layer)
     {
         int num = Convert.ToInt32(layer.text);
-        foreach (int i in lastSelected)
+        foreach (int i in selected)
         {
             EditorLogic.level[i].GetComponent<SpriteRenderer>().sortingOrder = num + 100;
             EditorLogic.objects[i].layer = num + 100;
@@ -303,7 +308,7 @@ public class EditorSelector : MonoBehaviour
 
     public void IsDeco(bool value)
     {
-        foreach (int index in EditorSelector.lastSelected)
+        foreach (int index in EditorSelector.selected)
         {
             EditorLogic.objects[index].deco = value;
         }
@@ -336,10 +341,10 @@ public class EditorSelector : MonoBehaviour
     private Vector3 GetCenter()
     {
         Vector3 a = Vector3.zero;
-        foreach (int index in lastSelected)
+        foreach (int index in selected)
         {
             a += EditorLogic.level[index].transform.position;
         }
-        return a / (float)lastSelected.Count;
+        return a / (float)selected.Count;
     }
 }
