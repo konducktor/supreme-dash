@@ -83,6 +83,7 @@ public class SaveLoader : MonoBehaviour
         JSONObject data = new JSONObject();
 
         EditorSound.songID = 0;
+        cam.backgroundColor = new Color(0.6f, 0.6f, 0.6f);
 
         for (int i = 0; i < lvl.list.Count; i++)
         {

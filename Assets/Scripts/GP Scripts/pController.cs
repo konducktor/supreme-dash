@@ -75,7 +75,7 @@ public class pController : MonoBehaviour
             switch (gameMode)
             {
                 case "cube":
-                    rb.AddForce(Vector2.up * 40f);
+                    rb.AddForce(Vector2.up * 30f);
                     break;
 
                 case "ball":
