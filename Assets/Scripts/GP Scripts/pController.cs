@@ -46,12 +46,10 @@ public class pController : MonoBehaviour
         SetGamemode("cube");
     }
 
-    float horizontalMove = 0f;
     bool isJumpung = false, isButtonDown = false;
 
     private void Update()
     {
-        horizontalMove = GameInput.HorizontalConstrolls();
         if (GameInput.IsVerticalControlls()) isJumpung = true;
         if (GameInput.ButtonDown()) isButtonDown = true;
 

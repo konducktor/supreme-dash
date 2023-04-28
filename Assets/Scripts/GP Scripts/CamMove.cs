@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class CamMove : MonoBehaviour
 {
-    [SerializeField] private Transform player;
+    [SerializeField]
+    private Transform player;
 
-    [Range(0f, 1f)]
-    public float smoothTime;
+    [SerializeField][Range(0f, 1f)] private float smoothTime;
 
     [SerializeField] private Vector3 offset = new Vector3(0, 0, -10f);
 
